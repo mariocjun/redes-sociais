@@ -1,1050 +1,960 @@
-/*
-Estilo de Layout:
-O CSS atual utiliza principalmente Flexbox para organizar e alinhar os elementos. Essa técnica permite uma disposição fluida dos
-itens e é amplamente utilizada nas seções de cabeçalho, cards e layouts horizontais.
-Transições e Animações:
-Foram implementadas transições suaves (usando transition) e animações com @keyframes para oferecer feedback visual e
-interações mais dinâmicas, comuns em interfaces de redes sociais.
-Variáveis CSS e Temas:
-As variáveis definidas no :root possibilitam uma rápida personalização de cores, fontes e outros aspectos visuais, 
-facilitando a criação de diferentes temas (MySpace, Orkut, Facebook, etc.), alinhando-se com a identidade de cada rede social.
-Metodologia BEM:
-A nomenclatura e os comentários seguem o padrão BEM (Block, Element, Modifier), o que garante clareza e modularidade, 
-facilitando a manutenção e escalabilidade do código.
-*/
+/* =====================================================================================================================================================
+   DESCRIÇÃO GERAL: Este arquivo CSS foi desenvolvido para criar um layout responsivo e temático para uma página que simula redes sociais, 
+   utilizando técnicas modernas como Flexbox, Transições suaves e variáveis CSS. Cada bloco de código foi estruturado e comentado de forma
+   detalhada, seguindo a metodologia BEM, de modo que cada classe e funcionalidade tenha explicações extensas, atendendo ao requisito mínimo
+   de 64 caracteres por linha de comentário e 128 caracteres por classe, para que alunos e iniciantes possam compreender cada detalhe do código.
+===================================================================================================================================================== */
 
-/* =====================================================================
-   GLOBAL / RESET (Block: global)
-   ---------------------------------------------------------------------
-*/
+/* =====================================================================================================================================================
+   BLOCO GLOBAL / RESET (Block: global) - Este bloco redefine os estilos padrões de todos os elementos HTML para garantir consistência
+   na renderização entre navegadores diferentes, removendo margens, preenchimentos e utilizando o box-sizing: border-box para incluir borda
+   e padding no tamanho total do elemento. Essa abordagem padronizada é fundamental para que o desenvolvedor tenha total controle sobre o layout
+   sem interferências dos estilos padrões dos navegadores, facilitando a manutenção e customização do projeto.
+===================================================================================================================================================== */
 * {
-    margin: 0; /* Remove margens */
-    padding: 0; /* Remove preenchimentos */
-    box-sizing: border-box; /* Adiciona borda e preenchimento ao tamanho */
+    margin: 0;  /* Zera as margens de todos os elementos, eliminando espaçamentos automáticos que podem causar inconsistência visual */
+    padding: 0;  /* Remove os preenchimentos internos padrão dos elementos, garantindo uma base uniforme para a aplicação de estilos personalizados */
+    box-sizing: border-box;  /* Inclui a largura das bordas e do padding no cálculo total do tamanho do elemento, facilitando o controle preciso do layout */
 }
 
 html,
 body {
-    overflow: hidden; /* Impede a rolagem da página */
-    height: 100%; /* Altura total */
+    overflow: hidden;  /* Impede a rolagem da página, mantendo os elementos fixos e o design controlado em telas inteiras sem scroll automático */
+    height: 100%;  /* Define a altura total da página para que o layout ocupe toda a janela do navegador, importante para designs em tela cheia */
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif;  /* Especifica a fonte padrão para o conteúdo textual, escolhida por sua legibilidade e ampla disponibilidade em diversos sistemas */
 }
 
-/* =====================================================================
-    BLOCK: page-header
-*/
+/* =====================================================================================================================================================
+   BLOCO: page-header - Este bloco define o cabeçalho fixo da página, contendo a barra de navegação, botões e barra de progresso. 
+   A classe .page-header utiliza posicionamento fixo para manter o cabeçalho sempre visível, aplica flexbox para centralizar seus conteúdos 
+   e utiliza sombras sutis para dar destaque visual. Esse design garante que as opções de navegação fiquem acessíveis em qualquer parte da página,
+   facilitando a interação do usuário e proporcionando uma interface moderna e limpa para o gerenciamento dos conteúdos exibidos.
+===================================================================================================================================================== */
 .page-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 40px;
-    background: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0 20px;
-    z-index: 1100;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;  /* Posiciona o cabeçalho de forma fixa na tela, fazendo com que ele permaneça visível durante a rolagem */
+    top: 0;  /* Alinha o cabeçalho ao topo da janela do navegador, garantindo acesso imediato às opções de navegação */
+    left: 0;  /* Garante que o cabeçalho comece na borda esquerda da tela, mantendo a simetria e alinhamento adequado */
+    right: 0;  /* Faz com que o cabeçalho se estenda até a borda direita da tela, ocupando toda a largura disponível */
+    height: 40px;  /* Define a altura do cabeçalho, proporcionando um espaço visual adequado sem ocupar muito da área de conteúdo */
+    background: #fff;  /* Aplica um fundo branco ao cabeçalho para destacar os elementos e proporcionar contraste com outros elementos da página */
+    display: flex;  /* Utiliza Flexbox para organizar os itens internos, facilitando a centralização e distribuição dos elementos */
+    flex-direction: column;  /* Organiza os itens em coluna, permitindo a inclusão de uma barra de progresso abaixo da navegação principal */
+    justify-content: center;  /* Centraliza verticalmente os itens do cabeçalho, assegurando um alinhamento visual equilibrado */
+    padding: 0 20px;  /* Adiciona preenchimento horizontal para afastar os itens das bordas, melhorando a estética e a usabilidade */
+    z-index: 1100;  /* Define uma alta prioridade de empilhamento para garantir que o cabeçalho fique acima de outros elementos da página */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  /* Aplica uma sombra sutil para dar profundidade e destacar o cabeçalho em relação ao fundo */
 }
 
 .header-nav {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+    display: flex;  /* Utiliza Flexbox para organizar os itens de navegação de forma flexível e responsiva */
+    justify-content: center;  /* Centraliza horizontalmente os itens de navegação, garantindo um layout simétrico e agradável */
+    gap: 10px;  /* Define um espaçamento fixo entre os itens, melhorando a legibilidade e o toque interativo dos botões */
 }
 
 .header-btn {
-    background: transparent;
-    border: none;
-    font-size: 0.9rem;
-    cursor: pointer;
-    padding: 5px 10px;
+    background: transparent;  /* Define o fundo dos botões como transparente para integrar com o design minimalista do cabeçalho */
+    border: none;  /* Remove bordas padrões dos botões, possibilitando um estilo mais limpo e moderno */
+    font-size: 0.9rem;  /* Define o tamanho da fonte para os botões, mantendo uma hierarquia visual adequada com o restante do conteúdo */
+    cursor: pointer;  /* Altera o cursor para pointer quando o usuário passa sobre o botão, indicando que o elemento é clicável */
+    padding: 5px 10px;  /* Adiciona preenchimento interno aos botões para aumentar a área clicável e melhorar a experiência do usuário */
 }
 
 .header-btn.active {
-    font-weight: bold;
-    border-bottom: 2px solid #032f35;
+    font-weight: bold;  /* Torna o botão ativo com negrito, destacando visualmente a opção selecionada na navegação */
+    border-bottom: 2px solid #032f35;  /* Adiciona uma borda inferior ao botão ativo para evidenciar a sua seleção com um toque de cor */
 }
 
 .progress-container {
-    height: 4px;
-    background: #ddd;
-    width: 100%;
-    margin-top: 4px;
+    height: 4px;  /* Define a altura da barra de progresso, mantendo-a fina e discreta, mas visível para o usuário */
+    background: #ddd;  /* Aplica uma cor de fundo neutra para a barra de progresso, permitindo que o progresso real se destaque */
+    width: 100%;  /* Garante que a barra de progresso ocupe toda a largura do cabeçalho, alinhando-se com os demais elementos */
+    margin-top: 4px;  /* Adiciona uma margem superior para separar a barra de progresso da área de navegação, melhorando a visualização */
 }
 
 .progress-bar {
-    height: 100%;
-    background: #032f35;
-    width: 0;
-    transition: width 0.3s ease;
+    height: 100%;  /* Faz com que a barra de progresso preencha toda a altura do container, criando um efeito visual contínuo */
+    background: #032f35;  /* Define uma cor contrastante para indicar a parte concluída da barra de progresso, destacando o progresso */
+    width: 0;  /* Inicializa a barra de progresso com largura zero, para que o preenchimento seja animado dinamicamente */
+    transition: width 0.3s ease;  /* Aplica uma transição suave na largura para uma animação fluida durante o avanço do progresso */
 }
 
-/* =====================================================================
-    BLOCK: animations
-*/
+/* =====================================================================================================================================================
+   BLOCO: animations - Este bloco define os estilos para animações e transições, aplicados aos elementos como cartões e conectores. 
+   Aqui, a propriedade transition é utilizada para criar efeitos visuais ao interagir com os elementos, enquanto a animação fadeInUp definida com 
+   @keyframes faz com que os elementos apareçam suavemente de baixo para cima, proporcionando uma experiência visual dinâmica e envolvente para o usuário.
+   Esse conjunto de regras é fundamental para enriquecer a interface com feedbacks visuais agradáveis e transições fluidas entre estados de interação.
+===================================================================================================================================================== */
 .card,
 .connector {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Define uma transição suave para transformações e sombras, melhorando a resposta interativa ao hover */
 }
 
 @keyframes fadeInUp {
     from {
-        opacity: 0;
-        transform: translateY(20px);
+        opacity: 0;  /* Começa com total transparência, permitindo um efeito de fade-in */
+        transform: translateY(20px);  /* Inicialmente desloca o elemento 20px para baixo para criar o efeito de subida durante a animação */
     }
-
     to {
-        opacity: 1;
-        transform: translateY(0);
+        opacity: 1;  /* Finaliza com opacidade total, fazendo com que o elemento fique totalmente visível */
+        transform: translateY(0);  /* Remove o deslocamento vertical para que o elemento se posicione em seu local original com suavidade */
     }
 }
 
-/* =====================================================================
-    BLOCK: wrapper
-*/
+/* =====================================================================================================================================================
+   BLOCO: wrapper - Este bloco é responsável por conter as seções principais da página, garantindo uma transição fluida e um espaço vertical 
+   extenso (500vh) para permitir o scroll e a navegação entre as seções. A utilização do Flexbox e transições com cubic-bezier cria uma experiência 
+   visual dinâmica e interativa, onde os elementos se movem de forma suave e controlada, enriquecendo a experiência do usuário ao navegar pelo conteúdo.
+   Este container é essencial para o layout de páginas que simulam aplicações de redes sociais, proporcionando estrutura e movimento ao design.
+===================================================================================================================================================== */
 .wrapper {
-    transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
-    height: 500vh;
-    /* Mantém 500vh */
-    position: relative;
-    padding-top: 40px;
+    transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);  /* Define uma transição com tempo e função de aceleração personalizada para movimentos suaves do container */
+    height: 500vh;  /* Define a altura do wrapper como 500 vezes a altura da viewport, permitindo um scroll extenso para múltiplas seções */
+    position: relative;  /* Posiciona o wrapper de forma relativa para que os elementos internos possam ser posicionados de forma absoluta se necessário */
+    padding-top: 40px;  /* Adiciona um preenchimento no topo para acomodar o cabeçalho fixo e evitar sobreposição de conteúdo */
 }
 
 section {
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
+    width: 100vw;  /* Define a largura de cada seção como a largura total da viewport, garantindo que cada parte ocupe toda a tela */
+    height: 100vh;  /* Define a altura de cada seção como a altura total da viewport, facilitando a criação de slides ou telas inteiras */
+    position: relative;  /* Permite o posicionamento absoluto de elementos internos dentro de cada seção, mantendo a estrutura organizada */
+    overflow: hidden;  /* Oculta qualquer conteúdo que ultrapasse os limites da seção, assegurando que o design fique limpo e sem elementos indesejados */
 }
 
-/* =====================================================================
-    BLOCK: intro
-*/
+/* =====================================================================================================================================================
+   BLOCO: intro - Este bloco é utilizado para a seção de introdução ou apresentação, onde são exibidos títulos e textos explicativos 
+   centralizados na tela. A classe .intro utiliza Flexbox para alinhar e justificar seu conteúdo de forma centralizada, garantindo que o 
+   texto e os elementos visuais fiquem equilibrados e chamem a atenção do usuário. Os estilos aplicados aqui são fundamentais para criar uma 
+   primeira impressão impactante e informativa, facilitando a compreensão do propósito do site e engajando o usuário desde o início da navegação.
+===================================================================================================================================================== */
 .intro {
-    background: #bcb8ad;
-    /* Cor de fallback, será sobrescrita */
-    color: #032f35;
-    /* Cor de fallback */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
+    background: #bcb8ad;  /* Define uma cor de fundo de fallback para a seção de introdução, podendo ser sobrescrita por temas específicos */
+    color: #032f35;  /* Define a cor do texto com um tom escuro para garantir contraste e legibilidade sobre o fundo claro */
+    display: flex;  /* Utiliza Flexbox para organizar os elementos internos de forma flexível e responsiva, centralizando o conteúdo */
+    flex-direction: column;  /* Organiza os itens em coluna, permitindo que o título e o parágrafo sejam empilhados verticalmente */
+    align-items: center;  /* Alinha horizontalmente os itens ao centro, garantindo que o conteúdo fique centralizado na tela */
+    justify-content: center;  /* Centraliza os itens verticalmente, de forma que o conteúdo fique exatamente no meio da seção */
+    text-align: center;  /* Centraliza o texto contido nos elementos, melhorando a apresentação e a estética da introdução */
+    padding: 20px;  /* Adiciona preenchimento interno para evitar que o conteúdo encoste nas bordas da tela e melhore a legibilidade */
 }
 
 .intro h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    line-height: 1.2;
+    font-size: 3rem;  /* Define o tamanho da fonte para o título principal, garantindo que ele se destaque e seja facilmente legível */
+    margin-bottom: 1rem;  /* Adiciona uma margem inferior para separar o título do parágrafo, criando espaçamento adequado entre os elementos */
+    line-height: 1.2;  /* Define a altura da linha para o título, garantindo uma leitura confortável e um layout harmonioso */
 }
 
 .intro p {
-    font-size: 1.5rem;
+    font-size: 1.5rem;  /* Define o tamanho da fonte para os parágrafos na introdução, proporcionando clareza e destaque na leitura do texto */
 }
 
-/* =====================================================================
-    BLOCK: sectionPin
-*/
+/* =====================================================================================================================================================
+   BLOCO: sectionPin - Este bloco é utilizado para definir seções com fundo fixo ou "pin", onde o conteúdo é posicionado de forma 
+   relativa e interativa, permitindo que certos elementos fiquem fixos ou se movam de forma diferenciada durante o scroll. A classe .sectionPin 
+   configura a área de exibição com cores de fallback e garante que o conteúdo interno seja exibido com a hierarquia visual adequada, sendo 
+   especialmente útil para criar efeitos de ancoragem e interatividade em layouts modernos de páginas web.
+===================================================================================================================================================== */
 .sectionPin {
-    background: #111;
-    /* Cor de fallback */
-    color: #b9b3a9;
-    /* Cor de fallback */
-    position: relative;
+    background: #111;  /* Define uma cor de fundo escura como fallback para a seção, criando um contraste forte com os elementos de texto */
+    color: #b9b3a9;  /* Aplica uma cor de texto clara e suave para garantir boa legibilidade sobre o fundo escuro */
+    position: relative;  /* Permite o posicionamento dos elementos internos de forma absoluta se necessário, mantendo a estrutura da seção */
 }
 
 .pin-wrap {
-    display: flex;
-    transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+    display: flex;  /* Utiliza Flexbox para organizar os elementos internos de forma flexível, facilitando a disposição horizontal ou vertical */
+    transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);  /* Aplica uma transição suave para transformações, proporcionando um efeito visual dinâmico */
 }
 
 .slot {
-    flex-shrink: 0;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-shrink: 0;  /* Impede que o item encolha quando o container é redimensionado, mantendo o tamanho definido para cada slot */
+    height: 100vh;  /* Define a altura de cada slot como a altura total da viewport, permitindo a exibição de conteúdos em tela cheia */
+    display: flex;  /* Utiliza Flexbox para centralizar o conteúdo dentro do slot, garantindo um alinhamento vertical e horizontal perfeito */
+    align-items: center;  /* Alinha os itens verticalmente ao centro dentro do slot, melhorando a distribuição e a estética do conteúdo */
+    justify-content: center;  /* Centraliza os itens horizontalmente, proporcionando um layout simétrico e equilibrado para cada slot */
 }
 
-/* =====================================================================
-   BLOCK: card (Cartão de Conteúdo)
-   ---------------------------------------------------------------------
-*/
+/* =====================================================================================================================================================
+   BLOCO: card (Cartão de Conteúdo) - Esta classe define o estilo dos cartões que exibem conteúdo principal, como textos e imagens, 
+   utilizados nas seções do site. O cartão possui bordas, sombras e arredondamento, além de ser centralizado utilizando Flexbox. 
+   Os estilos aplicados garantem que o cartão seja visualmente atraente e responsivo, proporcionando uma área de conteúdo clara e 
+   organizada para os usuários, além de oferecer feedback visual com animações suaves ao interagir com ele, enriquecendo a experiência do usuário.
+===================================================================================================================================================== */
 .card {
-    width: 80vw;
-    height: 80vh;
-    border: 2px solid #fff;
-    /* Borda padrão (será sobrescrita) */
-    border-radius: 10px;
-    /* Arredondamento padrão */
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #222;
-    /* Fundo padrão */
-    z-index: 1;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Sombra padrão suave */
+    width: 80vw;  /* Define a largura do cartão como 80% da largura da viewport, garantindo um espaço generoso para exibir o conteúdo */
+    height: 80vh;  /* Define a altura do cartão como 80% da altura da viewport, proporcionando um tamanho impactante e centralizado */
+    border: 2px solid #fff;  /* Aplica uma borda de 2 pixels com cor branca para delimitar visualmente o cartão e destacá-lo no layout */
+    border-radius: 10px;  /* Arredonda os cantos do cartão para criar um visual mais suave e moderno, facilitando a identificação do elemento */
+    overflow: hidden;  /* Esconde quaisquer conteúdos que ultrapassem os limites do cartão, mantendo a apresentação limpa e organizada */
+    display: flex;  /* Utiliza Flexbox para centralizar o conteúdo interno do cartão, tanto horizontal quanto verticalmente */
+    align-items: center;  /* Centraliza verticalmente o conteúdo dentro do cartão para um melhor equilíbrio visual */
+    justify-content: center;  /* Centraliza horizontalmente o conteúdo dentro do cartão, garantindo simetria e harmonia no layout */
+    background: #222;  /* Define uma cor de fundo escura para o cartão, proporcionando contraste com o texto e outros elementos internos */
+    z-index: 1;  /* Atribui um valor de empilhamento que garante que o cartão fique acima de outros elementos de fundo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Aplica uma sombra sutil para criar um efeito de profundidade e destacar o cartão na página */
 }
 
 .text-card {
-    font-size: clamp(1rem, 4vw, 1.5rem);
-    line-height: 1.6;
-    /* Aumenta o espaçamento entre linhas */
-    overflow: auto;
-    padding: 20px;
-    /* Adiciona padding interno */
+    font-size: clamp(1rem, 4vw, 1.5rem);  /* Utiliza a função clamp para definir um tamanho de fonte responsivo, adaptando-se a diferentes larguras de viewport */
+    line-height: 1.6;  /* Define um espaçamento entre linhas que facilita a leitura do conteúdo textual contido no cartão */
+    overflow: auto;  /* Permite que o conteúdo excedente dentro do cartão seja rolável, evitando que o layout quebre em telas menores */
+    padding: 20px;  /* Adiciona preenchimento interno para que o texto não encoste nas bordas do cartão, melhorando a legibilidade e o design */
 }
 
-/* =====================================================================
-   BLOCK: image-card
-   ---------------------------------------------------------------------
-*/
+/* =====================================================================================================================================================
+   BLOCO: image-card - Este bloco é responsável por definir o estilo dos cartões que combinam imagens e textos, organizando os elementos 
+   em uma estrutura dividida em porcentagens para exibir tanto a imagem quanto o texto de forma harmônica. O design utiliza Flexbox para alinhar 
+   os conteúdos e garante que a imagem seja exibida de forma responsiva e esteticamente agradável, enquanto o texto complementa a apresentação do 
+   conteúdo. Essa divisão facilita a criação de layouts visuais dinâmicos e modernos, que se adaptam bem a diferentes tamanhos de tela e dispositivos.
+===================================================================================================================================================== */
 .image-card .card-content {
-    display: flex;
-    width: 100%;
-    height: 100%;
+    display: flex;  /* Utiliza Flexbox para alinhar a imagem e o texto lado a lado, criando um layout dividido e organizado */
+    width: 100%;  /* Define a largura total do conteúdo do cartão para garantir que ambos os elementos ocupem o espaço de forma proporcional */
+    height: 100%;  /* Garante que a altura do conteúdo do cartão seja igual à altura do cartão, mantendo a consistência visual */
 }
 
 .image-card .card-text {
-    flex: 0 0 30%;
-    background: #333;
-    /* Cor de fallback */
-    color: #fff;
-    /* Cor de fallback */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    font-size: 1.2rem;
-    border-right: 1px solid #fff;
-    /*Pode ser sobrescrita*/
+    flex: 0 0 30%;  /* Reserva 30% do espaço para a parte de texto do cartão, definindo uma largura fixa que não se altera com o redimensionamento */
+    background: #333;  /* Define uma cor de fundo escura para a área de texto, proporcionando um contraste adequado com a cor da fonte */
+    color: #fff;  /* Define a cor do texto como branca para garantir uma boa legibilidade sobre o fundo escuro */
+    display: flex;  /* Utiliza Flexbox para centralizar o conteúdo textual vertical e horizontalmente dentro da área designada */
+    align-items: center;  /* Alinha o texto verticalmente no centro da área para um visual equilibrado e esteticamente agradável */
+    justify-content: center;  /* Centraliza horizontalmente o texto, garantindo que ele fique bem posicionado e visível */
+    padding: 10px;  /* Adiciona um pequeno preenchimento para que o texto não encoste nas bordas, melhorando a aparência e a legibilidade */
+    font-size: 1.2rem;  /* Define o tamanho da fonte para a área de texto, garantindo clareza e destaque dentro do cartão */
+    border-right: 1px solid #fff;  /* Adiciona uma borda direita para separar visualmente a área de texto da área de imagem, criando um divisor elegante */
 }
 
 .image-card .card-image {
-    flex: 0 0 70%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #000;
-    /* Cor de fallback */
+    flex: 0 0 70%;  /* Reserva 70% do espaço para a área de imagem, garantindo que a imagem ocupe a maior parte do cartão para um impacto visual maior */
+    display: flex;  /* Utiliza Flexbox para centralizar a imagem dentro do container, assegurando um alinhamento perfeito e responsivo */
+    align-items: center;  /* Centraliza a imagem verticalmente para que ela fique harmoniosamente posicionada dentro da área designada */
+    justify-content: center;  /* Centraliza a imagem horizontalmente, garantindo que ela se posicione de forma equilibrada no espaço disponível */
+    background: #000;  /* Define uma cor de fundo preta para a área de imagem, que serve como fallback caso a imagem não seja carregada ou para criar contraste */
 }
 
 .image-card .card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 100%;  /* Define a largura da imagem para ocupar totalmente a área do container, garantindo que a imagem seja exibida sem cortes */
+    height: 100%;  /* Faz com que a altura da imagem se ajuste ao container, mantendo a proporção e preenchendo todo o espaço disponível */
+    object-fit: cover;  /* Faz com que a imagem cubra todo o espaço do container, cortando as partes que ultrapassam e mantendo a estética visual */
 }
 
-/* =====================================================================
-   BLOCK: connector
-   ---------------------------------------------------------------------
-*/
+/* =====================================================================================================================================================
+   BLOCO: connector - Este bloco define os estilos para os conectores, que são elementos gráficos utilizados para criar divisões 
+   visuais e conexões entre seções do layout. Os conectores geralmente consistem em uma linha e um texto centralizado que descreve a 
+   conexão entre elementos, ajudando o usuário a entender a continuidade ou a separação de conteúdos de forma clara e visualmente agradável. 
+   O design dos conectores utiliza posicionamento absoluto e técnicas de alinhamento para que fiquem corretamente posicionados dentro do layout.
+===================================================================================================================================================== */
 .connector {
-    width: 100%;
-    height: 20px;
-    position: relative;
-    z-index: 0;
+    width: 100%;  /* Faz com que o conector ocupe toda a largura disponível, criando uma linha de separação que se estende por toda a tela */
+    height: 20px;  /* Define a altura do conector, permitindo espaço suficiente para a linha e o texto associado sem comprometer o layout */
+    position: relative;  /* Utiliza posicionamento relativo para que os elementos internos possam ser posicionados de forma absoluta em relação a ele */
+    z-index: 0;  /* Define um valor de empilhamento baixo para que o conector fique atrás de elementos interativos como os cartões */
 }
 
 .connector .line {
-    position: absolute;
-    width: 40vw;
-    height: 2px;
-    background: #fff;
-    top: 50%;
-    left: -10vw;
-    transform: translateY(-50%);
+    position: absolute;  /* Posiciona a linha de forma absoluta dentro do conector para um controle preciso de seu posicionamento */
+    width: 40vw;  /* Define a largura da linha como 40% da viewport, criando um efeito visual que não ocupa toda a largura e adiciona dinamismo */
+    height: 2px;  /* Define a altura da linha com 2 pixels para um visual discreto e elegante, adequado como divisor visual */
+    background: #fff;  /* Aplica uma cor branca à linha para que ela se destaque sobre fundos escuros ou coloridos, garantindo visibilidade */
+    top: 50%;  /* Posiciona a linha verticalmente no meio do container, assegurando que fique centralizada em relação ao seu espaço */
+    left: -10vw;  /* Define um deslocamento horizontal negativo para que a linha comece antes da borda esquerda, criando um efeito de extensão */
+    transform: translateY(-50%);  /* Ajusta o posicionamento vertical da linha para compensar o deslocamento e garantir centralização exata */
 }
 
 .connector .connector-text {
-    position: absolute;
-    top: -1.5em;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 1rem;
-    color: #fff;
-    background: rgba(0, 0, 0, 0.6);
-    padding: 2px 5px;
-    border-radius: 4px;
-    white-space: nowrap;
+    position: absolute;  /* Posiciona o texto do conector de forma absoluta para que ele possa ser centralizado sobre a linha */
+    top: -1.5em;  /* Posiciona o texto acima da linha, criando um pequeno espaçamento que evita sobreposição e melhora a legibilidade */
+    left: 50%;  /* Centraliza horizontalmente o texto em relação ao conector, garantindo que ele fique bem posicionado sobre a linha */
+    transform: translateX(-50%);  /* Ajusta o posicionamento do texto para que fique perfeitamente centralizado horizontalmente */
+    font-size: 1rem;  /* Define o tamanho da fonte do texto para que seja legível e se integre harmoniosamente com o restante do layout */
+    color: #fff;  /* Aplica uma cor branca ao texto para garantir contraste com fundos escuros e facilitar a leitura */
+    background: rgba(0, 0, 0, 0.6);  /* Utiliza um fundo semitransparente para que o texto se destaque sem perder a harmonia com o fundo */
+    padding: 2px 5px;  /* Adiciona preenchimento ao redor do texto para melhorar a legibilidade e criar um efeito de “badge” visual */
+    border-radius: 4px;  /* Arredonda levemente os cantos do fundo do texto, proporcionando um visual moderno e amigável */
+    white-space: nowrap;  /* Impede que o texto quebre em múltiplas linhas, mantendo-o em uma única linha para consistência visual */
 }
 
-/* =====================================================================
-    BLOCK: btn
-*/
+/* =====================================================================================================================================================
+   BLOCO: btn - Este bloco define os estilos para os botões de navegação que permitem ao usuário alternar entre as seções ou 
+   interagir com o conteúdo de forma dinâmica. Os botões são posicionados de forma fixa e centralizada verticalmente na tela, com 
+   cores e fontes que se destacam sobre o fundo, além de oferecerem feedback visual ao serem clicados ou ao receberem o hover, melhorando 
+   a experiência interativa e guiando o usuário pelas funcionalidades do site com clareza e elegância.
+===================================================================================================================================================== */
 .btn {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 1.5rem;
-    z-index: 1000;
+    position: fixed;  /* Posiciona o botão de forma fixa na tela, permitindo que ele permaneça visível independentemente da rolagem */
+    top: 50%;  /* Posiciona verticalmente o botão no meio da tela, facilitando o acesso e a visibilidade para o usuário */
+    transform: translateY(-50%);  /* Ajusta a posição do botão para que ele fique exatamente centralizado verticalmente */
+    background: rgba(0, 0, 0, 0.6);  /* Define um fundo semi-transparente que se destaca sem ser agressivo, mantendo a harmonia visual */
+    color: #fff;  /* Define a cor do texto do botão como branca para garantir boa visibilidade sobre o fundo escuro */
+    border: none;  /* Remove qualquer borda padrão para que o botão tenha um visual limpo e moderno, sem elementos desnecessários */
+    padding: 10px 20px;  /* Adiciona preenchimento interno para aumentar a área clicável e proporcionar conforto visual durante a interação */
+    cursor: pointer;  /* Altera o cursor para indicar que o elemento é interativo, melhorando a usabilidade do botão */
+    font-size: 1.5rem;  /* Define um tamanho de fonte maior para os botões, garantindo que sejam facilmente legíveis e visíveis */
+    z-index: 1000;  /* Atribui um alto valor de empilhamento para que os botões fiquem sempre acima de outros elementos da interface */
 }
 
 .btn.prev {
-    left: 20px;
+    left: 20px;  /* Posiciona o botão “anterior” a 20 pixels da borda esquerda, garantindo fácil acesso e distinção visual */
 }
 
 .btn.next {
-    right: 20px;
+    right: 20px;  /* Posiciona o botão “próximo” a 20 pixels da borda direita, proporcionando simetria e acessibilidade para navegação */
 }
 
-/* =====================================================================
-   RESPONSIVIDADE (Mobile Styles)
-*/
+/* =====================================================================================================================================================
+   BLOCO: RESPONSIVIDADE (Mobile Styles) - Este bloco contém regras de mídia que adaptam o layout para telas com largura máxima de 768px,
+   garantindo que todos os elementos sejam redimensionados e reposicionados para proporcionar uma experiência de usuário agradável em dispositivos móveis.
+   As alterações incluem ajustes no tamanho do cabeçalho, reposicionamento dos botões de navegação e modificações nos cartões para que se adequem 
+   melhor às telas menores, mantendo a integridade do design e a funcionalidade interativa em diferentes dispositivos.
+===================================================================================================================================================== */
 @media (max-width: 768px) {
 
-    /* BLOCK: page-header (Mobile) */
+    /* BLOCO: page-header (Mobile) - Ajusta o cabeçalho para telas menores com aumento de altura e fontes maiores para melhor legibilidade */
     .page-header {
-        height: 60px;
-        padding: 0 20px;
+        height: 60px;  /* Aumenta a altura do cabeçalho para 60 pixels em dispositivos móveis, garantindo que os elementos internos não fiquem comprimidos */
+        padding: 0 20px;  /* Mantém o preenchimento horizontal para que os itens do cabeçalho não encostem nas bordas da tela */
     }
 
     .header-nav {
-        font-size: 1.2rem;
+        font-size: 1.2rem;  /* Aumenta o tamanho da fonte dos itens de navegação para melhorar a leitura e a usabilidade em telas pequenas */
     }
 
-    /* BLOCK: btn (Reposicionamento dos botões para mobile) */
+    /* BLOCO: btn (Reposicionamento dos botões para mobile) - Reposiciona os botões de navegação para a parte inferior da tela, facilitando o acesso em dispositivos com toque */
     .btn {
-        top: auto;
-        bottom: 20px;
-        transform: none;
-        font-size: 2rem;
+        top: auto;  /* Remove o posicionamento superior fixo, permitindo que o botão seja reposicionado conforme a necessidade */
+        bottom: 20px;  /* Posiciona os botões a 20 pixels da borda inferior para garantir que fiquem facilmente acessíveis no toque */
+        transform: none;  /* Remove a transformação vertical, pois o reposicionamento será feito a partir do bottom e não mais do centro da tela */
+        font-size: 2rem;  /* Aumenta o tamanho da fonte dos botões para que fiquem mais visíveis e acessíveis em dispositivos móveis */
     }
 
     .btn.prev {
-        left: 20px;
+        left: 20px;  /* Mantém o posicionamento do botão “anterior” a 20 pixels da borda esquerda, assegurando consistência visual mesmo no mobile */
     }
 
     .btn.next {
-        right: 20px;
+        right: 20px;  /* Posiciona o botão “próximo” a 20 pixels da borda direita, garantindo fácil acesso e equilíbrio visual em telas menores */
     }
 
-    /* Ajuste nos cards para mobile */
+    /* Ajuste nos cartões para mobile - Reduz a largura dos cartões para que se adaptem melhor a telas menores e evitem overflow de conteúdo */
     .card.text-card,
     .card.image-card {
-        width: 95vw;
+        width: 95vw;  /* Define a largura dos cartões como 95% da viewport em dispositivos móveis, garantindo que ocupem a maior parte da tela sem causar rolagem horizontal */
     }
 
     .text-card ul {
-        list-style-type: disc;
-        /* Mostra os bullets */
-        padding-left: 30px;
-        /* Espaço para os bullets */
-        margin: 15px 0;
-        /* Espaço vertical entre listas */
+        list-style-type: disc;  /* Mostra os marcadores em listas não ordenadas para manter a clareza e a organização do conteúdo textual */
+        padding-left: 30px;  /* Adiciona um espaçamento interno à esquerda para que os bullets não fiquem colados ao texto, melhorando a legibilidade */
+        margin: 15px 0;  /* Define uma margem vertical para separar as listas de outros elementos, garantindo espaçamento adequado entre os itens */
     }
 
     .text-card li {
-        margin-bottom: 1em;
-        /* Espaço entre cada item da lista */
-        line-height: 1.4;
-        /* Espaçamento entre linhas do mesmo item */
+        margin-bottom: 1em;  /* Adiciona uma margem inferior em cada item da lista para separar visualmente os elementos e facilitar a leitura */
+        line-height: 1.4;  /* Define a altura da linha para os itens da lista, proporcionando um espaçamento confortável entre linhas de texto */
     }
 
-    /* BLOCK: image-card (Ajuste do layout para mobile) */
+    /* BLOCO: image-card (Ajuste do layout para mobile) - Altera a disposição dos elementos do cartão com imagem para um layout vertical em dispositivos móveis */
     .image-card .card-content {
-        flex-direction: column;
+        flex-direction: column;  /* Muda a direção do layout para coluna, fazendo com que a imagem e o texto sejam exibidos em sequência verticalmente */
     }
 
     .image-card .card-image {
-        order: 1;
-        flex: 0 0 70%;
-        width: 100%;
+        order: 1;  /* Define a ordem dos elementos, posicionando a área de imagem antes da área de texto para priorizar o conteúdo visual */
+        flex: 0 0 70%;  /* Reserva 70% do espaço para a imagem mesmo no layout vertical, garantindo que a imagem continue destacada */
+        width: 100%;  /* Faz com que a área de imagem ocupe toda a largura disponível, adaptando-se perfeitamente ao layout mobile */
     }
 
     .image-card .card-text {
-        order: 2;
-        flex: 0 0 30%;
-        width: 100%;
-        border-top: 1px solid #fff;
-        /* Borda superior no mobile */
+        order: 2;  /* Define a ordem dos elementos, posicionando a área de texto após a imagem para manter uma hierarquia visual intuitiva */
+        flex: 0 0 30%;  /* Reserva 30% do espaço para o texto, mantendo o equilíbrio entre os elementos mesmo em layout vertical */
+        width: 100%;  /* Garante que a área de texto ocupe toda a largura do container, proporcionando uma leitura clara e sem cortes */
+        border-top: 1px solid #fff;  /* Adiciona uma borda superior ao invés de uma borda direita, adaptando o divisor para o layout vertical no mobile */
     }
 
-    /* Remove conectores na versão mobile */
+    /* Remove conectores na versão mobile - Oculta elementos do tipo conector para otimizar o layout e evitar poluição visual em telas pequenas */
     .slot[data-type="connector"] {
-        display: none;
+        display: none;  /* Esconde os elementos de conector, pois podem não ser necessários ou podem atrapalhar a visualização em dispositivos móveis */
     }
 
-    /* Ajuste de posicionamento para liberar espaço para os botões */
+    /* Ajuste de posicionamento para liberar espaço para os botões - Modifica o alinhamento dos cartões para que fiquem com espaçamento adequado no topo */
     .sectionPin .slot[data-type="card"] {
-        align-items: flex-start;
-        justify-content: center;
-        padding-top: 30px;
+        align-items: flex-start;  /* Alinha os cartões ao início do eixo vertical, liberando espaço para os botões e melhorando o layout geral no mobile */
+        justify-content: center;  /* Centraliza os cartões horizontalmente, garantindo que fiquem bem posicionados mesmo com a alteração do alinhamento vertical */
+        padding-top: 30px;  /* Adiciona um preenchimento superior para que os cartões não fiquem colados no topo e ganhem um espaçamento adequado */
     }
 
-    /* Desativa efeito hover para dispositivos móveis (geral) */
+    /* Desativa efeito hover para dispositivos móveis (geral) - Remove transformações e sombras no hover para evitar efeitos que não funcionam bem em telas de toque */
     .card:hover {
-        transform: none !important;
-        box-shadow: none !important;
+        transform: none !important;  /* Desativa qualquer transformação no hover para dispositivos móveis, onde o efeito pode não ser percebido adequadamente */
+        box-shadow: none !important;  /* Remove a sombra no hover para evitar efeitos visuais que possam prejudicar a experiência em telas sensíveis ao toque */
     }
 
     .instagram-feed-full {
-        width: 100%;
-        max-width: 600px;
-        grid-template-columns: repeat(3, 1fr);
-        margin: 0 auto;
+        width: 100%;  /* Faz com que o container do feed do Instagram ocupe toda a largura disponível, adaptando-se a telas pequenas */
+        max-width: 600px;  /* Define uma largura máxima para evitar que o layout se estenda demais em dispositivos maiores, mantendo o design consistente */
+        grid-template-columns: repeat(3, 1fr);  /* Organiza o feed em três colunas de tamanho igual, garantindo um layout simétrico e organizado mesmo no mobile */
+        margin: 0 auto;  /* Centraliza o container na tela, garantindo que o feed fique bem posicionado e com margens automáticas */
     }
 }
 
-/* =====================================================================
-   BLOCK: theme (Variáveis e Temas para Redes Sociais)
-   ---------------------------------------------------------------------
-*/
-
+/* =====================================================================================================================================================
+   BLOCO: theme (Variáveis e Temas para Redes Sociais) - Este bloco define as variáveis CSS no :root para possibilitar uma rápida personalização 
+   dos estilos visuais do site. As variáveis englobam cores primárias, secundárias, fontes e configurações específicas para temas de redes sociais 
+   como MySpace, Orkut, Facebook, Twitter, Instagram e TikTok. Essa abordagem modular permite que o desenvolvedor altere facilmente o tema da página 
+   sem modificar diretamente os estilos de cada componente, facilitando a manutenção e a escalabilidade do projeto de forma clara e organizada.
+===================================================================================================================================================== */
 :root {
-    --telegraf-primary: #1e1e2f;
-    --telegraf-secondary: #f0f0f0;
-    --telegraf-font: 'Courier New', monospace;
+    --telegraf-primary: #1e1e2f;  /* Define a cor primária para o tema Telegraf, usada como fundo ou destaque em elementos chave do layout */
+    --telegraf-secondary: #f0f0f0;  /* Define a cor secundária para o tema Telegraf, geralmente utilizada para fontes e elementos contrastantes */
+    --telegraf-font: 'Courier New', monospace;  /* Define a fonte padrão para o tema Telegraf, optando por uma tipografia monoespaçada e clássica */
 
-    /* MySpace */
-    --myspace-primary: #0d2340;
-    /* Azul escuro, mais profundo */
-    --myspace-secondary: #ffcc66;
-    /* Amarelo mais suave */
-    --myspace-font: 'VT323', monospace;
-    /* Fonte pixelada */
-    --myspace-card-border: 2px solid var(--myspace-secondary);
-    --myspace-card-bg: linear-gradient(135deg, #1a385e 0%, #0d2340 100%);
-    /* Gradiente sutil */
-    --myspace-card-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-    /* Sombra mais pronunciada */
+    /* MySpace Theme Variables */
+    --myspace-primary: #0d2340;  /* Define uma cor primária escura e profunda para o tema MySpace, usada como fundo principal ou de destaque */
+    --myspace-secondary: #ffcc66;  /* Define uma cor secundária amarela suave para o tema MySpace, que é utilizada em detalhes e destaques visuais */
+    --myspace-font: 'VT323', monospace;  /* Define uma fonte pixelada e estilizada para o tema MySpace, remetendo ao visual retrô e digital dos anos 80 */
+    --myspace-card-border: 2px solid var(--myspace-secondary);  /* Define o estilo da borda dos cartões para o tema MySpace, utilizando a cor secundária para realce */
+    --myspace-card-bg: linear-gradient(135deg, #1a385e 0%, #0d2340 100%);  /* Cria um fundo em gradiente sutil para os cartões no tema MySpace, adicionando profundidade e modernidade */
+    --myspace-card-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);  /* Aplica uma sombra mais pronunciada aos cartões do tema MySpace para realçar o efeito de elevação visual */
 
-    /* Orkut */
-    --orkut-primary: #e22bca;
-    /* Roxo vibrante */
-    --orkut-secondary: #fff;
-    --orkut-font: 'Arial', sans-serif;
-    --orkut-card-border: 3px solid var(--orkut-primary);
-    --orkut-card-bg: #fff;
-    --orkut-card-radius: 15px;
-    /* Bordas mais arredondadas */
+    /* Orkut Theme Variables */
+    --orkut-primary: #e22bca;  /* Define a cor primária vibrante para o tema Orkut, usada para destacar elementos importantes na interface */
+    --orkut-secondary: #fff;  /* Define a cor secundária branca para o tema Orkut, que contrasta com a cor primária para melhorar a legibilidade */
+    --orkut-font: 'Arial', sans-serif;  /* Define a fonte padrão para o tema Orkut, escolhendo uma tipografia simples e legível para o conteúdo */
+    --orkut-card-border: 3px solid var(--orkut-primary);  /* Define a borda dos cartões do tema Orkut com uma espessura maior, destacando os elementos com a cor primária */
+    --orkut-card-bg: #fff;  /* Define o fundo dos cartões do tema Orkut como branco, proporcionando um visual limpo e clássico para o layout */
+    --orkut-card-radius: 15px;  /* Aplica um arredondamento maior aos cartões do tema Orkut para dar um toque mais amigável e moderno ao design */
 
-    /* Facebook */
-    --facebook-primary: #3b5998;
-    /* Azul Facebook mais preciso */
-    --facebook-secondary: #f0f2f5;
-    /* Cinza claro */
-    --facebook-font: 'Helvetica Neue', Arial, sans-serif;
-    --facebook-card-border: 1px solid #dddfe2;
-    /* Borda cinza clara */
-    --facebook-card-bg: #fff;
-    --facebook-card-radius: 8px;
-    /* Bordas levemente arredondadas */
+    /* Facebook Theme Variables */
+    --facebook-primary: #3b5998;  /* Define a cor primária oficial do Facebook, utilizada para destacar e criar identidade visual com base na marca */
+    --facebook-secondary: #f0f2f5;  /* Define uma cor secundária clara para o Facebook, geralmente utilizada para fundos ou elementos de suporte */
+    --facebook-font: 'Helvetica Neue', Arial, sans-serif;  /* Define a fonte utilizada no tema do Facebook, escolhida por sua modernidade e clareza na leitura */
+    --facebook-card-border: 1px solid #dddfe2;  /* Define a borda dos cartões do Facebook com uma cor neutra para dar um toque sutil e elegante ao layout */
+    --facebook-card-bg: #fff;  /* Define o fundo dos cartões do Facebook como branco, mantendo um design limpo e minimalista em conformidade com o padrão da rede */
+    --facebook-card-radius: 8px;  /* Aplica um arredondamento leve aos cartões do Facebook para manter a modernidade sem exagerar na suavidade dos cantos */
 
-    /* Twitter/X */
-    --twitter-primary: #000;
-    --twitter-secondary: #fff;
-    --twitter-font: 'Chirp', Arial, sans-serif;
-    /* Fonte do Twitter/X */
-    --twitter-card-border: 1px solid #444;
-    /* Borda cinza escura */
-    --twitter-card-bg: #111;
-    /*Um pouco mais escuro*/
+    /* Twitter/X Theme Variables */
+    --twitter-primary: #000;  /* Define a cor primária para o tema Twitter, optando por um preto intenso que remete ao visual clássico da rede social */
+    --twitter-secondary: #fff;  /* Define a cor secundária para o tema Twitter, utilizando o branco para proporcionar contraste e legibilidade */
+    --twitter-font: 'Chirp', Arial, sans-serif;  /* Define a fonte para o Twitter, escolhendo uma tipografia moderna e legível, de acordo com o padrão da rede */
+    --twitter-card-border: 1px solid #444;  /* Define a borda dos cartões do tema Twitter, utilizando um cinza escuro que complementa a estética minimalista da rede */
+    --twitter-card-bg: #111;  /* Define o fundo dos cartões do Twitter como um tom muito escuro, reforçando o contraste com os elementos textuais e visuais */
 
-    /* Instagram */
-    --instagram-primary: #e1306c;
-    /* Rosa mais vibrante */
-    --instagram-secondary: #ffdc80;
-    /* Amarelo vibrante */
-    --instagram-font: 'Instagram Sans', sans-serif;
-    /* Uma fonte sans-serif moderna */
-    --instagram-card-border: none;
-    /* Sem borda */
-    --instagram-card-bg: transparent;
-    /*Fundo transparente pra ficar com o gradiente do sectionPin*/
-    --instagram-card-radius: 12px;
+    /* Instagram Theme Variables */
+    --instagram-primary: #e1306c;  /* Define a cor primária vibrante para o Instagram, usada para chamar a atenção e representar a energia da plataforma */
+    --instagram-secondary: #ffdc80;  /* Define a cor secundária para o Instagram, utilizada em detalhes e elementos de destaque que complementam o tema */
+    --instagram-font: 'Instagram Sans', sans-serif;  /* Define a fonte para o tema do Instagram, escolhendo uma tipografia moderna e exclusiva que remete à identidade visual da rede */
+    --instagram-card-border: none;  /* Remove a borda dos cartões do Instagram para dar um visual mais limpo e integrado com o fundo gradiente */
+    --instagram-card-bg: transparent;  /* Define o fundo dos cartões do Instagram como transparente, permitindo que o gradiente do sectionPin seja visível e se destaque */
+    --instagram-card-radius: 12px;  /* Aplica um arredondamento moderado aos cartões do Instagram, proporcionando um visual moderno e amigável */
 
-    /* TikTok */
-    --tiktok-primary: #000;
-    --tiktok-secondary: #69c9d0;
-    /* Ciano */
-    --tiktok-tertiary: #ee1d52;
-    /* Rosa choque */
-    --tiktok-font: 'Proxima Nova', sans-serif;
-    /*Mesma fonte*/
-    --tiktok-card-border: none;
-    --tiktok-card-bg: #111;
+    /* TikTok Theme Variables */
+    --tiktok-primary: #000;  /* Define a cor primária para o tema TikTok, utilizando o preto para criar um visual moderno e ousado, característico da marca */
+    --tiktok-secondary: #69c9d0;  /* Define a cor secundária para o tema TikTok, escolhendo um tom ciano vibrante para destacar elementos interativos e visuais */
+    --tiktok-tertiary: #ee1d52;  /* Define uma terceira cor para o tema TikTok, optando por um rosa choque que complementa a paleta e adiciona dinamismo */
+    --tiktok-font: 'Proxima Nova', sans-serif;  /* Define a fonte para o tema TikTok, selecionada por sua modernidade e legibilidade, reforçando a identidade da rede */
+    --tiktok-card-border: none;  /* Remove a borda dos cartões do TikTok para um visual mais minimalista e focado no conteúdo e na imagem */
+    --tiktok-card-bg: #111;  /* Define o fundo dos cartões do TikTok com um tom escuro para criar contraste e destacar os elementos interativos da interface */
 }
 
 .intro.telegraf {
-    background: var(--telegraf-primary);
-    color: var(--telegraf-secondary);
-    font-family: var(--telegraf-font);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
+    background: var(--telegraf-primary);  /* Aplica a cor primária do tema Telegraf à seção de introdução para criar uma identidade visual coerente */
+    color: var(--telegraf-secondary);  /* Define a cor do texto utilizando a cor secundária do tema Telegraf, garantindo contraste e legibilidade */
+    font-family: var(--telegraf-font);  /* Utiliza a fonte específica do tema Telegraf para padronizar a tipografia e reforçar a identidade visual */
+    display: flex;  /* Aplica Flexbox para centralizar e organizar os elementos internos da seção de introdução de forma responsiva */
+    flex-direction: column;  /* Organiza os elementos em coluna, garantindo que o título e o parágrafo sejam exibidos em sequência verticalmente */
+    align-items: center;  /* Centraliza os elementos horizontalmente dentro da seção, proporcionando um layout simétrico e equilibrado */
+    justify-content: center;  /* Centraliza os elementos verticalmente para que fiquem posicionados no centro da tela, melhorando a experiência do usuário */
+    text-align: center;  /* Centraliza o texto para uma apresentação harmoniosa e fácil de ler, especialmente em dispositivos móveis e telas pequenas */
+    padding: 20px;  /* Adiciona preenchimento interno para evitar que os elementos fiquem colados nas bordas, aumentando a clareza e a estética do design */
 }
-
 
 /* ----- MySpace Theme ----- */
 .intro.myspace {
-    /*Já tem as configs*/
-    flex-direction: column;
-    /*Para organizar os elementos*/
-    align-items: center;
-    background: var(--myspace-primary);
-    color: var(--myspace-secondary);
-    font-family: var(--myspace-font);
+    /* Configurações específicas para o tema MySpace, organizando os elementos com flex-direction e alinhamento central para criar uma introdução visualmente impactante
+       onde a paleta de cores e a tipografia remetem ao estilo clássico e pixelado característico do MySpace, garantindo que cada elemento tenha a identidade visual adequada */
+    flex-direction: column;  /* Organiza os elementos em coluna para manter a estrutura vertical e clara, facilitando a leitura e a organização dos conteúdos */
+    align-items: center;  /* Centraliza os elementos horizontalmente para garantir um layout simétrico e esteticamente agradável, fundamental para a identidade do tema MySpace */
+    background: var(--myspace-primary);  /* Aplica a cor primária do MySpace como fundo, reforçando a identidade visual e proporcionando um contraste marcante com os demais elementos */
+    color: var(--myspace-secondary);  /* Define a cor do texto com a cor secundária do MySpace, garantindo que os elementos de texto fiquem destacados e legíveis sobre o fundo */
+    font-family: var(--myspace-font);  /* Utiliza a fonte pixelada específica do MySpace para reforçar o estilo retrô e a identidade visual do tema */
 }
 
 h1.myspace {
-    font-family: var(--myspace-font);
-    /*Força a fonte nos títulos*/
-    font-size: 3.5rem;
-    /*Aumenta um pouco*/
+    font-family: var(--myspace-font);  /* Força o uso da fonte específica do MySpace para os títulos, mantendo a consistência tipográfica em todo o tema e reforçando o estilo visual */
+    font-size: 3.5rem;  /* Aumenta o tamanho da fonte para os títulos do MySpace, garantindo que o texto se destaque e chame a atenção imediatamente ao usuário */
 }
 
 .sectionPin.myspace {
-    background: var(--myspace-card-bg);
-    /* Usa o gradiente */
-    color: var(--myspace-secondary);
+    background: var(--myspace-card-bg);  /* Aplica o gradiente de fundo definido para os cartões do MySpace, criando um efeito visual sofisticado e harmonioso */
+    color: var(--myspace-secondary);  /* Define a cor do texto com a cor secundária do MySpace, assegurando que os elementos textuais fiquem legíveis e em destaque */
 }
 
 .sectionPin.myspace .card {
-    border: var(--myspace-card-border);
-    background: var(--myspace-card-bg);
-    box-shadow: var(--myspace-card-shadow);
+    border: var(--myspace-card-border);  /* Configura a borda do cartão com os parâmetros definidos para o tema MySpace, destacando-o de forma elegante e coerente */
+    background: var(--myspace-card-bg);  /* Define o fundo do cartão com o gradiente do MySpace para criar uma aparência moderna e consistente com o tema */
+    box-shadow: var(--myspace-card-shadow);  /* Aplica a sombra definida para os cartões do MySpace, criando um efeito de profundidade que enriquece a experiência visual */
 }
 
 .sectionPin.myspace .text-card {
-    color: var(--myspace-secondary);
+    color: var(--myspace-secondary);  /* Garante que o texto dentro dos cartões do tema MySpace utilize a cor secundária, proporcionando um contraste adequado e legibilidade */
 }
 
 /* Efeito de hover específico para MySpace */
 .sectionPin.myspace .card:hover {
-    transform: translateY(-5px);
-    /* Leve elevação */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-    /* Sombra mais intensa */
+    transform: translateY(-5px);  /* Aplica um leve deslocamento para cima ao passar o mouse sobre o cartão, criando um efeito de elevação que enriquece a interação visual */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);  /* Aumenta a sombra do cartão durante o hover, intensificando o efeito de profundidade e destacando o elemento de forma interativa */
 }
 
 .myspace-profile-mockup {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 1rem;
-    width: 80%;
-    /* Ajuste conforme necessário */
-    max-width: 400px;
-    /* Largura máxima */
-    background-color: rgba(255, 255, 255, 0.1);
-    /* Fundo semi-transparente */
-    border: 2px solid var(--myspace-secondary);
-    padding: 1rem;
-    border-radius: 10px;
+    display: flex;  /* Utiliza Flexbox para organizar os elementos internos do mockup de perfil do MySpace, garantindo um layout alinhado e responsivo */
+    flex-direction: column;  /* Organiza os itens em coluna para que a imagem do perfil, a descrição e os amigos fiquem dispostos verticalmente de forma clara */
+    align-items: center;  /* Centraliza os elementos horizontalmente, garantindo que todos os componentes do perfil fiquem bem alinhados e simétricos */
+    margin-bottom: 1rem;  /* Adiciona uma margem inferior para separar visualmente o mockup dos demais elementos da página, facilitando a leitura e organização */
+    width: 80%;  /* Define a largura do mockup como 80% do container, garantindo que ele ocupe uma área significativa sem sobrecarregar o layout */
+    max-width: 400px;  /* Limita a largura máxima para que o mockup não fique desproporcional em telas maiores, mantendo a consistência visual */
+    background-color: rgba(255, 255, 255, 0.1);  /* Aplica um fundo semi-transparente ao mockup para que os elementos internos se destaquem sem comprometer a harmonia do design */
+    border: 2px solid var(--myspace-secondary);  /* Define uma borda com a cor secundária do MySpace, reforçando a identidade visual e delimitando o espaço do mockup */
+    padding: 1rem;  /* Adiciona preenchimento interno para que os elementos do mockup não fiquem encostados nas bordas, garantindo conforto visual e clareza */
+    border-radius: 10px;  /* Arredonda os cantos do mockup para proporcionar um visual moderno e amigável, facilitando a identificação do elemento */
 }
 
 .myspace-profile-mockup .profile-pic {
-    width: 80px;
-    height: 80px;
-    background-color: #ccc;
-    /* Cor de placeholder */
-    border-radius: 50%;
-    margin-bottom: 0.5rem;
-    overflow: hidden;
+    width: 80px;  /* Define a largura da imagem do perfil como 80 pixels, garantindo um tamanho adequado e proporcional ao mockup */
+    height: 80px;  /* Define a altura da imagem do perfil, mantendo uma proporção quadrada para a apresentação da foto */
+    background-color: #ccc;  /* Aplica uma cor de placeholder à imagem do perfil para ser exibida caso a imagem real não seja carregada */
+    border-radius: 50%;  /* Utiliza bordas arredondadas para transformar a imagem em um círculo, seguindo o padrão visual de fotos de perfil */
+    margin-bottom: 0.5rem;  /* Adiciona uma margem inferior para separar a imagem dos demais elementos do mockup, facilitando a organização visual */
+    overflow: hidden;  /* Garante que quaisquer elementos excedentes da imagem sejam cortados, mantendo o formato circular e limpo do perfil */
 }
 
 .myspace-profile-mockup .about-me {
-    margin-bottom: 0.5rem;
-    text-align: center;
+    margin-bottom: 0.5rem;  /* Adiciona uma margem inferior ao bloco “about me” para separar visualmente a descrição do restante do mockup */
+    text-align: center;  /* Centraliza o texto de “about me” para que a descrição fique harmoniosamente posicionada dentro do mockup */
 }
 
 .myspace-profile-mockup .about-me p:first-child {
-    font-weight: bold;
+    font-weight: bold;  /* Torna o primeiro parágrafo do bloco “about me” em negrito, destacando informações essenciais como o nome ou título do perfil */
 }
 
 .myspace-profile-mockup .top-friends {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-    /* Espaçamento entre os ícones */
-    flex-direction: column;
-    /*Para o texto*/
-    align-items: center;
+    display: flex;  /* Utiliza Flexbox para organizar os ícones dos amigos em um layout flexível e responsivo, facilitando o agrupamento e alinhamento */
+    flex-wrap: wrap;  /* Permite que os ícones dos amigos quebrem para a próxima linha se o espaço horizontal não for suficiente, garantindo responsividade */
+    justify-content: center;  /* Centraliza os ícones horizontalmente para que o conjunto de amigos fique bem distribuído e visualmente agradável */
+    gap: 0.5rem;  /* Define um espaçamento entre os ícones para evitar que fiquem colados, proporcionando um layout limpo e organizado */
+    flex-direction: column;  /* Organiza os elementos em coluna para que o texto e os ícones possam ser exibidos em sequência, facilitando a leitura */
+    align-items: center;  /* Centraliza todos os elementos, tanto texto quanto ícones, garantindo que o layout seja simétrico e equilibrado */
 }
 
 .myspace-profile-mockup .top-friends .friend-icons-container {
-    display: flex;
-    flex-wrap: wrap;
-    /* justify-content: space-between; */
-    justify-content: center;
-    /* Alterado para centralizar */
-    width: 100%;
-    gap: 0.25rem;
-    /*Adicione um gap tambem*/
+    display: flex;  /* Utiliza Flexbox para agrupar os ícones dos amigos, facilitando o alinhamento e a disposição responsiva dos elementos */
+    flex-wrap: wrap;  /* Permite que os ícones se distribuam em várias linhas, se necessário, garantindo adaptabilidade a diferentes larguras de tela */
+    justify-content: center;  /* Centraliza os ícones dentro do container para que fiquem alinhados e simétricos, proporcionando um visual harmônico */
+    width: 100%;  /* Define que o container ocupe toda a largura disponível, garantindo consistência no layout dos ícones */
+    gap: 0.25rem;  /* Adiciona um pequeno espaçamento entre os ícones para que fiquem visualmente separados e organizados */
 }
 
 .myspace-profile-mockup .top-friends p {
-    margin-bottom: 0.5rem;
-    /* Espaço entre o texto e os ícones */
-    text-align: center;
-    /* Centraliza o texto */
-    font-weight: bold;
-    /* Opcional: deixa em negrito */
+    margin-bottom: 0.5rem;  /* Adiciona uma margem inferior ao parágrafo dos amigos para separar o texto dos ícones e melhorar a legibilidade */
+    text-align: center;  /* Centraliza o texto para que fique harmoniosamente posicionado em relação aos ícones, garantindo uniformidade visual */
+    font-weight: bold;  /* Utiliza negrito para destacar o texto dos amigos, enfatizando as informações e melhorando a percepção do conteúdo */
 }
 
 .myspace-profile-mockup .top-friends .friend-icon {
-    width: calc(25% - 0.25rem);
-    /* 25% para 4 por linha, menos o gap (agora definido no container)*/
-    height: auto;
-    /*  A altura será determinada pela largura e pela proporção da imagem */
-    margin: 0;
-    /* Removemos a margem individual, o gap do container cuida do espaçamento */
-    box-sizing: border-box;
-    border-radius: 50%;
-    overflow: hidden;
+    width: calc(25% - 0.25rem);  /* Define a largura dos ícones dos amigos para que quatro ícones se encaixem em uma linha, considerando o espaçamento definido */
+    height: auto;  /* Permite que a altura seja definida automaticamente de acordo com a largura, mantendo a proporção original da imagem */
+    margin: 0;  /* Remove qualquer margem individual dos ícones para que o espaçamento seja controlado unicamente pelo gap do container */
+    box-sizing: border-box;  /* Garante que o cálculo do tamanho inclua bordas e preenchimentos, mantendo a consistência no layout dos ícones */
+    border-radius: 50%;  /* Arredonda os ícones para transformá-los em círculos, seguindo a estética comum a fotos de perfil e avatares */
+    overflow: hidden;  /* Garante que qualquer parte da imagem que ultrapasse os limites do círculo seja cortada, mantendo o formato limpo e circular */
 }
-
 
 .myspace-profile-mockup .profile-pic img,
 .myspace-profile-mockup .top-friends .friend-icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* Garante que a imagem cubra o círculo */
-    display: block;
-    /* Remove espaço extra abaixo da imagem */
+    width: 100%;  /* Faz com que as imagens ocupem toda a largura do container, garantindo que sejam exibidas de forma proporcional e sem cortes */
+    height: 100%;  /* Define que a altura da imagem seja igual à do container, mantendo a integridade visual e a proporção correta */
+    object-fit: cover;  /* Faz com que a imagem cubra todo o espaço do container, cortando as partes excedentes para manter o formato desejado */
+    display: block;  /* Remove espaços indesejados abaixo da imagem, garantindo que o layout fique limpo e sem margens extras */
 }
-
 
 /* ----- Orkut Theme ----- */
 .intro.orkut {
-    flex-direction: column;
-    align-items: center;
-    background: var(--orkut-primary);
-    color: var(--orkut-secondary);
-    font-family: var(--orkut-font);
+    /* Configurações específicas para o tema Orkut, onde o layout é definido com cores vibrantes e uma tipografia clássica para remeter à identidade histórica 
+       da rede. Cada elemento é organizado com flexbox e espaçamentos que garantem clareza, enquanto os cartões e seções recebem bordas e arredondamentos que 
+       reforçam o visual nostálgico e característico do Orkut, facilitando a identificação dos componentes e proporcionando uma experiência de usuário agradável. */
+    flex-direction: column;  /* Organiza os elementos em coluna para que o título e o conteúdo fiquem empilhados de maneira clara e acessível */
+    align-items: center;  /* Centraliza os elementos horizontalmente para manter o layout simétrico e a identidade visual do tema Orkut */
+    background: var(--orkut-primary);  /* Aplica a cor primária do Orkut como fundo, garantindo que o tema mantenha a identidade visual histórica e marcante */
+    color: var(--orkut-secondary);  /* Define a cor do texto com a cor secundária do Orkut, assegurando que o contraste seja adequado para legibilidade */
+    font-family: var(--orkut-font);  /* Utiliza a fonte padrão definida para o Orkut, mantendo a coerência tipográfica e reforçando a identidade visual do tema */
 }
 
 .orkut h1 {
-    font-family: var(--orkut-font);
+    font-family: var(--orkut-font);  /* Garante que os títulos do tema Orkut utilizem a fonte correta para reforçar a identidade visual e o estilo da rede */
 }
 
 .sectionPin.orkut {
-    background: var(--orkut-primary);
-    color: var(--orkut-secondary);
+    background: var(--orkut-primary);  /* Define o fundo da seção do tema Orkut utilizando a cor primária, mantendo a consistência visual em toda a página */
+    color: var(--orkut-secondary);  /* Utiliza a cor secundária para os textos na seção do Orkut, garantindo boa legibilidade e harmonia com o fundo */
 }
 
 .sectionPin.orkut .card {
-    border: var(--orkut-card-border);
-    background-color: var(--orkut-card-bg);
-    border-radius: var(--orkut-card-radius);
+    border: var(--orkut-card-border);  /* Define a borda dos cartões do Orkut com a espessura e cor especificadas para realçar os elementos do layout */
+    background-color: var(--orkut-card-bg);  /* Define o fundo dos cartões do Orkut como branco, criando um contraste limpo e moderno com a cor primária do tema */
+    border-radius: var(--orkut-card-radius);  /* Aplica um arredondamento maior aos cartões para reforçar o visual amigável e acessível do Orkut */
 }
 
 .sectionPin.orkut .text-card {
-    color: var(--orkut-primary);
-    /* Texto roxo */
+    color: var(--orkut-primary);  /* Define a cor do texto dos cartões do Orkut com a cor primária, criando um contraste marcante e visualmente agradável */
 }
 
 .sectionPin.orkut .image-card .card-text {
-    background-color: var(--orkut-secondary);
-    /*Fundo branco*/
+    background-color: var(--orkut-secondary);  /* Define o fundo da área de texto em cartões com imagem para o Orkut, utilizando a cor secundária para maior contraste */
 }
 
+/* Ícones e detalhes específicos para o tema Orkut */
 .orkut-icons {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
+    display: flex;  /* Organiza os ícones do Orkut em linha com Flexbox para garantir alinhamento e distribuição uniforme dos elementos */
+    justify-content: center;  /* Centraliza os ícones horizontalmente, mantendo o design equilibrado e simétrico */
+    gap: 1rem;  /* Adiciona espaçamento consistente entre os ícones para que fiquem bem distribuídos e com aparência organizada */
+    margin-bottom: 1rem;  /* Define uma margem inferior para separar os ícones de outros elementos da página, melhorando a clareza visual */
 }
 
-/*ORKUT - FontAwesome*/
+/* ORKUT - FontAwesome */
 .orkut-icons .scrap-icon,
 .orkut-icons .heart-icon,
 .orkut-icons .testim-icon {
-    width: 40px;
-    height: 40px;
-    background-color: var(--orkut-secondary);
-    border-radius: 50%;
-    color: var(--orkut-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
+    width: 40px;  /* Define a largura dos ícones em 40 pixels para que fiquem visualmente consistentes e de tamanho adequado para interação */
+    height: 40px;  /* Define a altura dos ícones, mantendo a proporção quadrada para um design equilibrado e harmônico */
+    background-color: var(--orkut-secondary);  /* Aplica a cor secundária como fundo dos ícones, criando um contraste visual marcante com a cor primária do tema */
+    border-radius: 50%;  /* Arredonda os ícones para formar círculos, seguindo o padrão de design de ícones e avatares modernos */
+    color: var(--orkut-primary);  /* Define a cor dos ícones utilizando a cor primária do Orkut, garantindo que eles se destaquem visualmente sobre o fundo */
+    display: flex;  /* Utiliza Flexbox para centralizar o conteúdo interno dos ícones, garantindo que os símbolos fiquem perfeitamente alinhados */
+    align-items: center;  /* Centraliza os ícones verticalmente, melhorando a simetria e o aspecto estético dos elementos gráficos */
+    justify-content: center;  /* Centraliza os ícones horizontalmente para que fiquem bem posicionados e em harmonia com o restante do layout */
 }
 
-
 .orkut-icons .scrap-icon {
-    border-radius: 10px;
-    /*Balãozinho*/
+    border-radius: 10px;  /* Redefine o arredondamento para criar um efeito de “balão” para o ícone de scrap, diferenciando-o visualmente dos demais ícones */
 }
 
 .orkut-icons .testim-icon {
-    border-radius: 5px;
-    /*Testimonial*/
+    border-radius: 5px;  /* Aplica um arredondamento menor para o ícone de depoimento (testimonial), criando um visual distinto e alinhado com a estética do Orkut */
 }
 
 /* ----- Facebook Theme ----- */
 .intro.facebook {
-    flex-direction: column;
-    align-items: center;
-    background: var(--facebook-primary);
-    color: var(--facebook-secondary);
-    font-family: var(--facebook-font);
+    /* Configurações para o tema Facebook, onde o layout é definido com cores oficiais e uma tipografia moderna que remete à identidade da rede social.
+       Os elementos são organizados com flexbox e possuem estilos que enfatizam o minimalismo e a clareza visual, garantindo que cada componente seja facilmente
+       identificado e que o usuário se sinta familiarizado com o ambiente inspirado no Facebook, com cores e espaçamentos bem definidos. */
+    flex-direction: column;  /* Organiza os elementos em coluna para que o título e o conteúdo fiquem dispostos de forma clara e linear, facilitando a leitura */
+    align-items: center;  /* Centraliza os elementos horizontalmente, garantindo um layout simétrico e harmonioso, crucial para o design do Facebook */
+    background: var(--facebook-primary);  /* Define o fundo da introdução com a cor primária do Facebook, reforçando a identidade visual oficial da rede */
+    color: var(--facebook-secondary);  /* Utiliza a cor secundária para os textos, garantindo contraste adequado e uma leitura confortável em todas as telas */
+    font-family: var(--facebook-font);  /* Aplica a fonte moderna do Facebook para padronizar a tipografia e reforçar o estilo característico da rede */
 }
 
 .facebook h1 {
-    font-family: var(--facebook-font);
+    font-family: var(--facebook-font);  /* Garante que os títulos do tema Facebook utilizem a fonte correta, reforçando a identidade visual e mantendo a consistência tipográfica */
 }
 
 .sectionPin.facebook {
-    background: var(--facebook-secondary);
-    /* Fundo cinza claro */
-    color: var(--facebook-primary);
+    background: var(--facebook-secondary);  /* Define o fundo das seções do Facebook com a cor secundária, criando um ambiente limpo e minimalista que enfatiza o conteúdo */
+    color: var(--facebook-primary);  /* Altera a cor do texto para a cor primária, garantindo que os elementos textuais se destaquem e sejam facilmente legíveis */
 }
 
 .sectionPin.facebook .card {
-    border: var(--facebook-card-border);
-    background-color: var(--facebook-card-bg);
-    border-radius: var(--facebook-card-radius);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    /* Sombra sutil */
+    border: var(--facebook-card-border);  /* Configura a borda dos cartões do Facebook utilizando uma cor neutra, mantendo a elegância e a simplicidade do design */
+    background-color: var(--facebook-card-bg);  /* Define o fundo dos cartões como branco para um visual limpo e moderno, em conformidade com o padrão do Facebook */
+    border-radius: var(--facebook-card-radius);  /* Aplica um arredondamento leve aos cartões para suavizar os cantos e criar uma aparência mais moderna e acessível */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Adiciona uma sombra sutil para dar um efeito de elevação, realçando os cartões sem comprometer a clareza do layout */
 }
 
 .sectionPin.facebook .image-card .card-text {
-    background-color: var(--facebook-secondary);
-    color: var(--facebook-primary);
-    border-right-color: var(--facebook-card-border);
+    background-color: var(--facebook-secondary);  /* Define o fundo da área de texto em cartões com imagem para o Facebook, utilizando a cor secundária para criar um contraste suave */
+    color: var(--facebook-primary);  /* Garante que o texto dentro dos cartões tenha a cor primária, melhorando a visibilidade e a harmonia com o fundo claro */
+    border-right-color: var(--facebook-card-border);  /* Ajusta a cor da borda direita para combinar com o estilo geral dos cartões do Facebook, mantendo a consistência visual */
 }
 
 .sectionPin.facebook .text-card {
-    color: var(--facebook-primary);
+    color: var(--facebook-primary);  /* Define a cor do texto dos cartões do Facebook para que fique em destaque sobre o fundo claro, assegurando legibilidade */
 }
 
 .facebook-status-bar {
-    background-color: var(--facebook-secondary);
-    border: 1px solid var(--facebook-card-border);
-    padding: 1rem;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-    width: 80%;
-    max-width: 500px;
+    background-color: var(--facebook-secondary);  /* Define o fundo da barra de status com a cor secundária para criar um ambiente visual limpo e coerente com o tema */
+    border: 1px solid var(--facebook-card-border);  /* Adiciona uma borda sutil para delimitar a área da barra de status, mantendo a elegância do design */
+    padding: 1rem;  /* Aplica preenchimento interno para que o conteúdo da barra tenha espaço adequado e não fique aglomerado */
+    border-radius: 8px;  /* Arredonda os cantos da barra de status para um visual moderno e compatível com o design dos cartões do Facebook */
+    margin-bottom: 1rem;  /* Adiciona uma margem inferior para separar a barra de status dos demais elementos, garantindo clareza e organização no layout */
+    width: 80%;  /* Define a largura da barra de status como 80% do container, proporcionando um tamanho adequado e harmonioso com o restante do layout */
+    max-width: 500px;  /* Limita a largura máxima para que a barra de status não se expanda em telas maiores, mantendo a consistência visual */
 }
 
 .facebook-status-bar .friend-icons {
-    display: flex;
-    justify-content: flex-end;
-    /* Alinha à direita */
-    margin-top: 0.5rem;
+    display: flex;  /* Utiliza Flexbox para organizar os ícones de amigos dentro da barra de status, garantindo um alinhamento limpo e responsivo */
+    justify-content: flex-end;  /* Alinha os ícones à direita para seguir o padrão visual dos elementos de status do Facebook, proporcionando um layout organizado */
+    margin-top: 0.5rem;  /* Adiciona uma margem superior para separar os ícones do conteúdo textual, melhorando a clareza e o espaçamento visual */
 }
 
-/*FACEBOOK - FontAwesome*/
+/* FACEBOOK - FontAwesome */
 .facebook-status-bar .friend-icons .friend-icon {
-    width: 30px;
-    height: 30px;
-    /* background-color: #ccc; Removido o background-color */
-    border-radius: 50%;
-    margin-left: 0.25rem;
-    overflow: hidden;
-    display: flex;
-    /* Adicionado para centralizar o ícone */
-    align-items: center;
-    /* Adicionado para centralizar o ícone */
-    justify-content: center;
-    /* Adicionado para centralizar o ícone */
-    color: var(--facebook-primary);
+    width: 30px;  /* Define a largura dos ícones dos amigos como 30 pixels para que fiquem discretos e harmônicos com o layout da barra de status */
+    height: 30px;  /* Define a altura dos ícones para manter a proporção quadrada, garantindo que os ícones se ajustem bem ao espaço disponível */
+    border-radius: 50%;  /* Arredonda os ícones para transformá-los em círculos, seguindo a tendência visual de avatares modernos e reconhecíveis */
+    margin-left: 0.25rem;  /* Adiciona uma margem à esquerda de cada ícone para separar visualmente os elementos e evitar aglomerações */
+    overflow: hidden;  /* Garante que qualquer parte da imagem que exceda os limites do ícone seja cortada, mantendo um formato limpo e circular */
+    display: flex;  /* Utiliza Flexbox para centralizar o conteúdo dos ícones, garantindo que os símbolos fiquem bem posicionados e alinhados */
+    align-items: center;  /* Centraliza os ícones verticalmente para manter a simetria e o equilíbrio visual na barra de status */
+    justify-content: center;  /* Centraliza os ícones horizontalmente, assegurando que cada símbolo fique exatamente no centro do seu container */
+    color: var(--facebook-primary);  /* Define a cor dos ícones utilizando a cor primária do Facebook, garantindo que se destaquem de forma sutil e elegante */
 }
 
 /* ----- Twitter/X Theme ----- */
 .intro.twitter {
-    flex-direction: column;
-    background: var(--twitter-primary);
-    color: var(--twitter-secondary);
-    font-family: var(--twitter-font);
+    /* Configurações específicas para o tema Twitter, onde o layout é definido com cores contrastantes e uma tipografia moderna que remete à identidade minimalista da rede.
+       Os elementos são organizados com Flexbox para garantir alinhamento perfeito e a disposição clara dos conteúdos, permitindo que o usuário se concentre 
+       na informação sem distrações, e garantindo que cada componente interativo tenha destaque e funcionalidade em harmonia com o design do Twitter. */
+    flex-direction: column;  /* Organiza os elementos em coluna para que o título e os conteúdos sejam apresentados de forma sequencial e intuitiva */
+    background: var(--twitter-primary);  /* Aplica a cor primária do Twitter como fundo, criando um ambiente visual que remete à identidade da rede social */
+    color: var(--twitter-secondary);  /* Define a cor dos textos utilizando a cor secundária, garantindo contraste e clareza na leitura do conteúdo */
+    font-family: var(--twitter-font);  /* Utiliza a fonte específica do Twitter para padronizar a tipografia e reforçar o estilo minimalista do tema */
 }
 
 .twitter h1 {
-    font-family: var(--twitter-font);
+    font-family: var(--twitter-font);  /* Garante que os títulos do tema Twitter utilizem a fonte correta, mantendo a consistência e o estilo visual da rede */
 }
 
 .sectionPin.twitter {
-    background: var(--twitter-primary);
-    color: var(--twitter-secondary);
+    background: var(--twitter-primary);  /* Define o fundo das seções do Twitter utilizando a cor primária, assegurando que o layout mantenha a identidade do tema */
+    color: var(--twitter-secondary);  /* Define a cor do texto utilizando a cor secundária, garantindo que os elementos textuais se destaquem com clareza */
 }
 
 .sectionPin.twitter .card {
-    border: var(--twitter-card-border);
-    background-color: var(--twitter-card-bg);
+    border: var(--twitter-card-border);  /* Configura a borda dos cartões do Twitter para que fiquem alinhados com a estética minimalista da rede, utilizando um tom escuro */
+    background-color: var(--twitter-card-bg);  /* Define o fundo dos cartões do Twitter como um tom muito escuro, reforçando o contraste com os elementos textuais */
 }
 
 .sectionPin.twitter .text-card {
-    color: var(--twitter-secondary);
+    color: var(--twitter-secondary);  /* Garante que o texto dentro dos cartões do Twitter utilize a cor secundária, proporcionando boa legibilidade sobre o fundo escuro */
 }
 
 .twitter-tweet-box {
-    background-color: var(--twitter-primary);
-    border: 1px solid var(--twitter-secondary);
-    padding: 1rem;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-    width: 80%;
-    max-width: 400px;
-    position: relative;
-    /* Para posicionar o contador */
-    /* === Adições para o Twitter === */
-    display: flex;
-    /* Flexbox */
-    align-items: flex-start;
-    /* Alinha os itens no topo */
-    justify-content: space-between;
-    /* Espaço entre o texto e o ícone */
-
+    background-color: var(--twitter-primary);  /* Define o fundo da caixa de tweet como a cor primária do Twitter, criando um ambiente visual consistente com o tema */
+    border: 1px solid var(--twitter-secondary);  /* Aplica uma borda utilizando a cor secundária, delimitando a caixa de tweet e realçando seu conteúdo de forma sutil */
+    padding: 1rem;  /* Adiciona preenchimento interno para que o conteúdo da caixa tenha espaçamento adequado e não fique aglomerado */
+    border-radius: 8px;  /* Arredonda os cantos da caixa de tweet para proporcionar um visual moderno e amigável, facilitando a interação do usuário */
+    margin-bottom: 1rem;  /* Adiciona uma margem inferior para separar a caixa de tweet de outros elementos, mantendo a organização visual do layout */
+    width: 80%;  /* Define a largura da caixa de tweet como 80% do container, garantindo que ela ocupe um espaço harmonioso na página */
+    max-width: 400px;  /* Limita a largura máxima para que a caixa de tweet não se expanda demais, mantendo a consistência em diferentes dispositivos */
+    position: relative;  /* Utiliza posicionamento relativo para possibilitar o posicionamento de elementos internos, como ícones ou contadores, de forma absoluta */
+    display: flex;  /* Utiliza Flexbox para organizar os elementos dentro da caixa de tweet, garantindo alinhamento perfeito e espaçamento adequado entre os componentes */
+    align-items: flex-start;  /* Alinha os itens no topo para que o texto e os ícones fiquem bem distribuídos e visualmente equilibrados */
+    justify-content: space-between;  /* Distribui os elementos de forma que haja espaço entre eles, facilitando a separação clara do conteúdo e dos ícones */
 }
 
 .tweet-content {
-    display: flex;
-    flex-direction: column;
+    display: flex;  /* Utiliza Flexbox para organizar o conteúdo do tweet em uma estrutura flexível, garantindo que os elementos se adaptem a diferentes tamanhos de tela */
+    flex-direction: column;  /* Organiza os elementos em coluna para que o texto e outros componentes sejam apresentados de forma sequencial e intuitiva */
 }
 
-/*TWITTER - FontAwesome*/
+/* TWITTER - FontAwesome */
 .twitter-tweet-box .twitter-icon {
-    width: 30px;
-    height: 30px;
-    position: static;
-    margin-left: 1rem;
-    border-radius: 50%;
-    color: var(--twitter-secondary);
-    /* Cor do ícone */
-    display: flex;
-    /*Para centralizar*/
-    align-items: center;
-    /*Para centralizar*/
-    justify-content: center;
-    /*Para centralizar*/
-    font-size: 1.5rem;
-    /* Ajuste o tamanho conforme necessário */
-
+    width: 30px;  /* Define a largura do ícone do Twitter como 30 pixels para que ele se destaque sem dominar o layout, mantendo o equilíbrio visual */
+    height: 30px;  /* Define a altura do ícone para manter a proporção quadrada, assegurando que o design seja consistente e harmonioso */
+    position: static;  /* Remove posicionamento absoluto para que o ícone se integre naturalmente ao fluxo do layout dentro da caixa de tweet */
+    margin-left: 1rem;  /* Adiciona uma margem à esquerda para separar o ícone do conteúdo textual, garantindo que haja espaçamento adequado */
+    border-radius: 50%;  /* Arredonda o ícone para transformá-lo em um círculo, seguindo as tendências modernas de design para ícones e avatares */
+    color: var(--twitter-secondary);  /* Define a cor do ícone utilizando a cor secundária, garantindo que ele se destaque de forma clara contra o fundo escuro */
+    display: flex;  /* Utiliza Flexbox para centralizar o conteúdo interno do ícone, assegurando que o símbolo fique perfeitamente alinhado */
+    align-items: center;  /* Centraliza o ícone verticalmente para que fique posicionado de forma harmoniosa em relação ao conteúdo adjacente */
+    justify-content: center;  /* Centraliza o ícone horizontalmente, garantindo que ele esteja sempre no centro do seu container */
+    font-size: 1.5rem;  /* Define um tamanho de fonte maior para o ícone, tornando-o visível e atraente sem comprometer a estética minimalista do layout */
 }
-
 
 .twitter-tweet-box .char-count {
-    /* Remova position absolute */
-    position: static;
-    color: #888;
-    font-size: 0.8rem;
+    position: static;  /* Remove o posicionamento absoluto para que o contador de caracteres se integre naturalmente ao fluxo do conteúdo */
+    color: #888;  /* Define uma cor cinza para o contador de caracteres, garantindo que ele seja discreto e não interfira na leitura principal do tweet */
+    font-size: 0.8rem;  /* Define um tamanho de fonte menor para o contador, para que ele forneça a informação sem chamar muita atenção visualmente */
 }
-
 
 /* ----- Instagram Theme ----- */
-/* ... (estilos Instagram anteriores) ... */
 .intro.instagram {
-    flex-direction: column;
-    background: linear-gradient(45deg, var(--instagram-primary), var(--instagram-secondary));
-    color: #fff;
-    font-family: var(--instagram-font);
-
+    /* Configurações específicas para o tema Instagram, onde o layout é definido com gradientes vibrantes e tipografia moderna, 
+       proporcionando uma experiência visual dinâmica e contemporânea. A organização em Flexbox e a disposição dos elementos garantem 
+       que o conteúdo se adapte perfeitamente a diferentes tamanhos de tela, criando uma interface que valoriza a estética das imagens e o 
+       conteúdo visual, típico da experiência do Instagram. */
+    flex-direction: column;  /* Organiza os elementos em coluna para que o título, as imagens e demais conteúdos fiquem empilhados de forma intuitiva */
+    background: linear-gradient(45deg, var(--instagram-primary), var(--instagram-secondary));  /* Aplica um gradiente de 45 graus para criar um fundo vibrante e moderno */
+    color: #fff;  /* Define a cor do texto como branca para garantir que ele se destaque sobre o fundo gradiente e seja facilmente legível */
+    font-family: var(--instagram-font);  /* Utiliza a fonte específica do Instagram para padronizar a tipografia e reforçar a identidade visual da rede */
 }
-
 
 .instagram h1 {
-    font-family: var(--instagram-font);
+    font-family: var(--instagram-font);  /* Garante que os títulos do tema Instagram utilizem a fonte correta, mantendo a consistência e o estilo moderno do layout */
 }
 
 .intro.instagram {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    padding: 20px;
+    display: flex;  /* Utiliza Flexbox para organizar os elementos da introdução de forma responsiva e centralizada, valorizando o conteúdo visual */
+    flex-direction: column;  /* Organiza os elementos em coluna para que a hierarquia do conteúdo seja clara e intuitiva para o usuário */
+    height: 100vh;  /* Define a altura da introdução como 100% da viewport, garantindo que a seção ocupe toda a tela e crie um impacto visual imediato */
+    padding: 20px;  /* Adiciona preenchimento interno para que os elementos não fiquem encostados nas bordas, proporcionando uma melhor experiência de leitura */
 }
 
 .instagram-feed-full {
-    flex: 1;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 5px;
-    overflow: hidden;
+    flex: 1;  /* Permite que o feed ocupe todo o espaço disponível no container, garantindo que as imagens sejam exibidas de forma adequada */
+    display: grid;  /* Utiliza Grid Layout para organizar as imagens em uma grade, facilitando a distribuição e alinhamento dos elementos visuais */
+    grid-template-columns: repeat(3, 1fr);  /* Define uma grade com três colunas de tamanhos iguais para uma disposição equilibrada das imagens */
+    gap: 5px;  /* Adiciona um espaçamento de 5 pixels entre as imagens para criar separação e evitar que o layout fique muito compactado */
+    overflow: hidden;  /* Esconde qualquer conteúdo que ultrapasse os limites do container, mantendo a estética limpa e organizada */
 }
 
-
-
 .sectionPin.instagram {
-    background: linear-gradient(45deg, var(--instagram-primary) 20%, var(--instagram-secondary));
-    color: #fff;
+    background: linear-gradient(45deg, var(--instagram-primary) 20%, var(--instagram-secondary));  /* Define o fundo da seção Instagram com um gradiente que enfatiza os tons vibrantes do tema */
+    color: #fff;  /* Garante que o texto na seção Instagram seja exibido em branco, proporcionando um contraste adequado com o fundo gradiente */
 }
 
 .sectionPin.instagram .card {
-    border: var(--instagram-card-border);
-    background-color: var(--instagram-card-bg);
-    border-radius: var(--instagram-card-radius);
+    border: var(--instagram-card-border);  /* Remove a borda dos cartões do Instagram conforme definido nas variáveis, criando um visual mais limpo e minimalista */
+    background-color: var(--instagram-card-bg);  /* Define o fundo dos cartões como transparente para permitir a visualização do gradiente de fundo */
+    border-radius: var(--instagram-card-radius);  /* Aplica um arredondamento moderado aos cartões do Instagram para criar um visual moderno e harmonioso */
 }
 
 .sectionPin.instagram .text-card {
-    color: #fff;
+    color: #fff;  /* Garante que o texto dentro dos cartões do Instagram seja exibido em branco, assegurando que haja contraste adequado com o fundo */
 }
 
 .instagram-feed {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    /* 3 colunas */
-    gap: 0.5rem;
-    /* Espaçamento */
-    width: 80%;
-    max-width: 600px;
-    /* Largura máxima */
-    margin: 0 auto;
-    /* Centraliza */
-    margin-bottom: 1rem;
+    display: grid;  /* Utiliza Grid Layout para organizar as imagens do feed do Instagram em uma grade simétrica e responsiva */
+    grid-template-columns: repeat(3, 1fr);  /* Define três colunas de igual largura para que as imagens fiquem organizadas de maneira uniforme */
+    gap: 0.5rem;  /* Adiciona um espaçamento consistente entre as imagens para garantir uma separação visual clara e organizada */
+    width: 80%;  /* Define a largura do feed como 80% do container, garantindo que ele fique centralizado e proporcional à página */
+    max-width: 600px;  /* Limita a largura máxima para que o feed não se estenda demais em telas maiores, mantendo a consistência do layout */
+    margin: 0 auto;  /* Centraliza o feed horizontalmente, garantindo que ele fique bem posicionado na tela sem margens desnecessárias */
+    margin-bottom: 1rem;  /* Adiciona uma margem inferior para separar o feed dos demais elementos, melhorando a organização e clareza visual */
 }
 
 .instagram-feed .insta-pic {
-    width: 100%;
-    height: 0;
-    /* Importante para manter a proporção */
-    padding-bottom: 100%;
-    /* Mantém a proporção quadrada */
-    overflow: hidden;
-    /* Esconde o excesso */
-    position: relative;
-    /* Para posicionar a imagem */
+    width: 100%;  /* Define a largura das imagens do feed para ocupar toda a largura do container, garantindo uma exibição sem cortes */
+    height: 0;  /* Inicializa a altura com zero para utilizar a técnica de padding-bottom e manter a proporção quadrada das imagens */
+    padding-bottom: 100%;  /* Aplica um padding-bottom de 100% para criar uma área quadrada, fundamental para a exibição harmoniosa das imagens */
+    overflow: hidden;  /* Oculta qualquer conteúdo que ultrapasse os limites do container, garantindo um layout limpo e sem elementos dispersos */
+    position: relative;  /* Utiliza posicionamento relativo para que a imagem interna possa ser posicionada de forma absoluta, controlando seu layout */
 }
 
 .instagram-feed .insta-pic img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    position: absolute;  /* Posiciona a imagem de forma absoluta para que ela preencha todo o espaço do container de forma precisa */
+    top: 0;  /* Alinha a imagem ao topo do container, garantindo que não haja deslocamento indesejado na exibição */
+    left: 0;  /* Alinha a imagem à esquerda do container, mantendo a consistência e a simetria do layout das imagens */
+    width: 100%;  /* Faz com que a imagem ocupe 100% da largura do container, garantindo que seja exibida sem distorções */
+    height: 100%;  /* Faz com que a imagem ocupe 100% da altura do container, mantendo a proporção e a integridade visual da foto */
+    object-fit: cover;  /* Garante que a imagem cubra totalmente o container, cortando as partes excedentes para manter o foco no conteúdo central */
 }
 
-
 /* ----- TikTok Theme ----- */
-/* ... (estilos TikTok anteriores) ... */
 .intro.tiktok {
-    flex-direction: column;
-    background: var(--tiktok-primary);
-    color: var(--tiktok-secondary);
-    font-family: var(--tiktok-font);
+    /* Configurações específicas para o tema TikTok, onde o layout é estruturado com cores ousadas e contrastantes, e a tipografia moderna 
+       enfatiza a identidade da rede. Os elementos são organizados com Flexbox para garantir uma disposição clara e interativa, permitindo que o 
+       usuário se concentre tanto no conteúdo visual quanto textual, com efeitos dinâmicos e transições suaves que enriquecem a experiência de navegação. */
+    flex-direction: column;  /* Organiza os elementos em coluna para que o título, os vídeos e demais conteúdos sejam exibidos de forma sequencial e intuitiva */
+    background: var(--tiktok-primary);  /* Aplica a cor primária do TikTok como fundo para reforçar a identidade visual e proporcionar um contraste marcante */
+    color: var(--tiktok-secondary);  /* Define a cor do texto utilizando a cor secundária, garantindo que as informações sejam legíveis e visualmente atraentes */
+    font-family: var(--tiktok-font);  /* Utiliza a fonte específica do TikTok para padronizar a tipografia e reforçar o estilo moderno e dinâmico do tema */
 }
 
 .tiktok h1 {
-    font-family: var(--tiktok-font);
+    font-family: var(--tiktok-font);  /* Garante que os títulos do tema TikTok utilizem a fonte correta, reforçando a identidade visual e a modernidade do design */
 }
 
 .sectionPin.tiktok {
-    background: var(--tiktok-primary);
-    color: var(--tiktok-secondary);
+    background: var(--tiktok-primary);  /* Define o fundo das seções do TikTok utilizando a cor primária, mantendo a coerência e a identidade visual do tema */
+    color: var(--tiktok-secondary);  /* Define a cor do texto com a cor secundária, assegurando um bom contraste e legibilidade em todas as seções */
 }
 
 .sectionPin.tiktok .card {
-    border: var(--tiktok-card-border);
-    background-color: var(--tiktok-card-bg);
+    border: var(--tiktok-card-border);  /* Remove a borda dos cartões do TikTok conforme definido nas variáveis, criando um visual minimalista e moderno */
+    background-color: var(--tiktok-card-bg);  /* Define o fundo dos cartões do TikTok como um tom escuro, realçando o conteúdo e mantendo a identidade visual do tema */
 }
 
 .sectionPin.tiktok .text-card {
-    color: var(--tiktok-secondary);
+    color: var(--tiktok-secondary);  /* Define a cor do texto dentro dos cartões do TikTok utilizando a cor secundária, garantindo que o conteúdo seja claro e legível */
 }
 
 .sectionPin.tiktok .image-card .card-text {
-    background-color: var(--tiktok-tertiary);
-    /*Usa a cor rosa*/
-    border-right: none;
-    /*Sem borda*/
+    background-color: var(--tiktok-tertiary);  /* Define o fundo da área de texto em cartões com imagem para o TikTok utilizando a cor terciária, adicionando um toque vibrante e marcante */
+    border-right: none;  /* Remove a borda direita para simplificar o design e enfatizar o contraste com o fundo do cartão */
 }
 
 .tiktok-video-mockup {
-    background-color: #222;
-    border-radius: 10px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    width: 80%;
-    max-width: 400px;
-    position: relative;
-    height: 50vh;
-    /* Altura para simular vídeo */
-    overflow: hidden;
+    background-color: #222;  /* Define um fundo escuro para simular a área de vídeo, criando um contraste que realça o conteúdo visual do TikTok */
+    border-radius: 10px;  /* Aplica um arredondamento de 10 pixels aos cantos do mockup de vídeo, proporcionando um visual moderno e amigável */
+    padding: 1rem;  /* Adiciona preenchimento interno para que os elementos dentro do mockup tenham espaço adequado e não fiquem aglomerados */
+    margin-bottom: 1rem;  /* Adiciona uma margem inferior para separar o mockup de vídeo dos demais elementos, garantindo clareza e organização visual */
+    width: 80%;  /* Define a largura do mockup como 80% do container para que ele se ajuste de forma responsiva em diferentes dispositivos */
+    max-width: 400px;  /* Limita a largura máxima para que o mockup não se expanda demais em telas maiores, mantendo a consistência do layout */
+    position: relative;  /* Utiliza posicionamento relativo para possibilitar a sobreposição e o posicionamento absoluto de elementos internos, como legendas ou ícones */
+    height: 50vh;  /* Define a altura do mockup como 50% da altura da viewport, simulando a proporção de um vídeo e garantindo um espaço visual adequado */
+    overflow: hidden;  /* Oculta qualquer conteúdo que ultrapasse os limites do mockup, garantindo um visual limpo e sem elementos indesejados */
 }
 
 .tiktok-video-mockup p {
-    position: absolute;
-    bottom: 40px;
-    left: 10px;
-    z-index: 2;
+    position: absolute;  /* Posiciona o parágrafo de forma absoluta dentro do mockup para garantir que ele fique sobre a imagem ou vídeo sem deslocamentos inesperados */
+    bottom: 40px;  /* Posiciona o parágrafo a 40 pixels da borda inferior do mockup, garantindo que o texto fique bem visível e posicionado */
+    left: 10px;  /* Posiciona o parágrafo a 10 pixels da borda esquerda, assegurando um espaçamento adequado e um layout harmonioso */
+    z-index: 2;  /* Define um valor de empilhamento maior para que o parágrafo fique acima dos elementos de fundo e seja facilmente legível */
 }
 
 .tiktok-icons {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    position: absolute;  /* Posiciona os ícones do TikTok de forma absoluta dentro do mockup para garantir que fiquem em posições específicas e fixas */
+    bottom: 10px;  /* Posiciona os ícones a 10 pixels da borda inferior do mockup, garantindo que fiquem visíveis e acessíveis */
+    right: 10px;  /* Posiciona os ícones a 10 pixels da borda direita, proporcionando um layout equilibrado e bem posicionado */
+    display: flex;  /* Utiliza Flexbox para organizar os ícones verticalmente, facilitando a disposição e o espaçamento entre eles */
+    flex-direction: column;  /* Organiza os ícones em coluna para que fiquem empilhados e visualmente organizados, reforçando a clareza do layout */
+    gap: 0.5rem;  /* Adiciona um espaçamento de 0.5rem entre os ícones, garantindo que fiquem separados e bem distribuídos visualmente */
 }
 
 .tiktok-post-simulation {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 100%;  /* Define a largura do elemento de simulação de post como 100% do container, garantindo que ele ocupe todo o espaço disponível */
+    height: 100%;  /* Define a altura do elemento de simulação de post para que ele preencha todo o espaço do mockup, mantendo a proporção e o design planejado */
+    object-fit: cover;  /* Faz com que o conteúdo visual cubra totalmente o container, cortando as partes excedentes para manter a integridade do design */
 }
 
-/*TIKTOK - FontAwesome*/
-.tiktok-icons>div {
-    width: 30px;
-    height: 30px;
-    /* background-color: rgba(255, 255, 255, 0.8);  Ícones semi-transparentes */
-    border-radius: 50%;
-    display: flex;
-    /*Centralizar*/
-    align-items: center;
-    /*Centralizar*/
-    justify-content: center;
-    /*Centralizar*/
-    font-size: 1rem;
-    /* Ajustar o tamanho do ícone */
+/* TIKTOK - FontAwesome */
+.tiktok-icons > div {
+    width: 30px;  /* Define a largura dos ícones do TikTok como 30 pixels, garantindo que fiquem discretos e harmoniosos com o layout */
+    height: 30px;  /* Define a altura dos ícones para manter a proporção quadrada, assegurando um design consistente em todos os elementos */
+    border-radius: 50%;  /* Arredonda os ícones para formar círculos, criando uma aparência moderna e de fácil identificação para os usuários */
+    display: flex;  /* Utiliza Flexbox para centralizar os elementos internos dos ícones, garantindo que os símbolos fiquem perfeitamente alinhados */
+    align-items: center;  /* Centraliza os ícones verticalmente, assegurando que fiquem no centro do container e com boa visibilidade */
+    justify-content: center;  /* Centraliza os ícones horizontalmente para que cada símbolo fique posicionado de forma simétrica e agradável */
+    font-size: 1rem;  /* Define o tamanho da fonte dentro dos ícones para que sejam visíveis sem comprometer o design minimalista do TikTok */
 }
 
-/* Cores dos ícones do TikTok */
 .tiktok-icons .like-icon i {
-    color: #ee1d52;
-    /* Rosa choque */
+    color: #ee1d52;  /* Aplica a cor rosa choque ao ícone de like, destacando-o visualmente e associando-o à identidade vibrante do TikTok */
 }
 
 .tiktok-icons .comment-icon i {
-    color: #69c9d0;
-    /* Ciano */
+    color: #69c9d0;  /* Define a cor ciano para o ícone de comentário, criando um contraste visual atraente e harmonioso com os demais elementos do tema */
 }
 
 .tiktok-icons .share-icon i {
-    color: #fff;
-    /* Branco */
+    color: #fff;  /* Define a cor branca para o ícone de compartilhar, garantindo que ele se destaque sobre o fundo escuro e seja facilmente identificado */
 }
 
-
-
 /* ====================================================
-    Media Queries para o Header (Duas Linhas)
-   ==================================================== */
+   Media Queries para o Header (Duas Linhas) - Este bloco contém regras específicas para telas com largura máxima de 450px,
+   adaptando a exibição do cabeçalho e da navegação para dispositivos muito pequenos, garantindo que os itens se ajustem de forma 
+   flexível e que o layout permaneça claro, organizado e de fácil navegação mesmo em telas reduzidas, melhorando assim a experiência do usuário.
+=================================================================================================================== */
 @media (max-width: 450px) {
     .header-nav {
-        flex-direction: row;
-        /* Alinha os itens na horizontal */
-        flex-wrap: wrap;
-        /* Quebra a linha se necessário */
-        justify-content: center;
-        /* Alinha ao centro */
-        gap: 5px;
-        /* Espaçamento entre os itens */
+        flex-direction: row;  /* Alinha os itens de navegação horizontalmente para aproveitar melhor o espaço em telas muito pequenas */
+        flex-wrap: wrap;  /* Permite que os itens quebrem para a próxima linha se o espaço horizontal não for suficiente, mantendo a legibilidade */
+        justify-content: center;  /* Centraliza os itens de navegação para que fiquem simétricos e bem distribuídos mesmo em dispositivos compactos */
+        gap: 5px;  /* Define um espaçamento de 5 pixels entre os itens para evitar aglomerações e melhorar a separação visual */
     }
 
     .page-header {
-        height: auto;
-        /*Para se ajustar ao novo conteudo*/
+        height: auto;  /* Permite que o cabeçalho se ajuste automaticamente à quantidade de conteúdo, garantindo que nada seja cortado em telas pequenas */
     }
 }
