@@ -1,0 +1,1050 @@
+/*
+Estilo de Layout:
+O CSS atual utiliza principalmente Flexbox para organizar e alinhar os elementos. Essa técnica permite uma disposição fluida dos
+itens e é amplamente utilizada nas seções de cabeçalho, cards e layouts horizontais.
+Transições e Animações:
+Foram implementadas transições suaves (usando transition) e animações com @keyframes para oferecer feedback visual e
+interações mais dinâmicas, comuns em interfaces de redes sociais.
+Variáveis CSS e Temas:
+As variáveis definidas no :root possibilitam uma rápida personalização de cores, fontes e outros aspectos visuais, 
+facilitando a criação de diferentes temas (MySpace, Orkut, Facebook, etc.), alinhando-se com a identidade de cada rede social.
+Metodologia BEM:
+A nomenclatura e os comentários seguem o padrão BEM (Block, Element, Modifier), o que garante clareza e modularidade, 
+facilitando a manutenção e escalabilidade do código.
+*/
+
+/* =====================================================================
+   GLOBAL / RESET (Block: global)
+   ---------------------------------------------------------------------
+*/
+* {
+    margin: 0; /* Remove margens */
+    padding: 0; /* Remove preenchimentos */
+    box-sizing: border-box; /* Adiciona borda e preenchimento ao tamanho */
+}
+
+html,
+body {
+    overflow: hidden; /* Impede a rolagem da página */
+    height: 100%; /* Altura total */
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* =====================================================================
+    BLOCK: page-header
+*/
+.page-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 20px;
+    z-index: 1100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.header-btn {
+    background: transparent;
+    border: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.header-btn.active {
+    font-weight: bold;
+    border-bottom: 2px solid #032f35;
+}
+
+.progress-container {
+    height: 4px;
+    background: #ddd;
+    width: 100%;
+    margin-top: 4px;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #032f35;
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+/* =====================================================================
+    BLOCK: animations
+*/
+.card,
+.connector {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =====================================================================
+    BLOCK: wrapper
+*/
+.wrapper {
+    transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+    height: 500vh;
+    /* Mantém 500vh */
+    position: relative;
+    padding-top: 40px;
+}
+
+section {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* =====================================================================
+    BLOCK: intro
+*/
+.intro {
+    background: #bcb8ad;
+    /* Cor de fallback, será sobrescrita */
+    color: #032f35;
+    /* Cor de fallback */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.intro h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.intro p {
+    font-size: 1.5rem;
+}
+
+/* =====================================================================
+    BLOCK: sectionPin
+*/
+.sectionPin {
+    background: #111;
+    /* Cor de fallback */
+    color: #b9b3a9;
+    /* Cor de fallback */
+    position: relative;
+}
+
+.pin-wrap {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.slot {
+    flex-shrink: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =====================================================================
+   BLOCK: card (Cartão de Conteúdo)
+   ---------------------------------------------------------------------
+*/
+.card {
+    width: 80vw;
+    height: 80vh;
+    border: 2px solid #fff;
+    /* Borda padrão (será sobrescrita) */
+    border-radius: 10px;
+    /* Arredondamento padrão */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #222;
+    /* Fundo padrão */
+    z-index: 1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra padrão suave */
+}
+
+.text-card {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    line-height: 1.6;
+    /* Aumenta o espaçamento entre linhas */
+    overflow: auto;
+    padding: 20px;
+    /* Adiciona padding interno */
+}
+
+/* =====================================================================
+   BLOCK: image-card
+   ---------------------------------------------------------------------
+*/
+.image-card .card-content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.image-card .card-text {
+    flex: 0 0 30%;
+    background: #333;
+    /* Cor de fallback */
+    color: #fff;
+    /* Cor de fallback */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    font-size: 1.2rem;
+    border-right: 1px solid #fff;
+    /*Pode ser sobrescrita*/
+}
+
+.image-card .card-image {
+    flex: 0 0 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    /* Cor de fallback */
+}
+
+.image-card .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* =====================================================================
+   BLOCK: connector
+   ---------------------------------------------------------------------
+*/
+.connector {
+    width: 100%;
+    height: 20px;
+    position: relative;
+    z-index: 0;
+}
+
+.connector .line {
+    position: absolute;
+    width: 40vw;
+    height: 2px;
+    background: #fff;
+    top: 50%;
+    left: -10vw;
+    transform: translateY(-50%);
+}
+
+.connector .connector-text {
+    position: absolute;
+    top: -1.5em;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 2px 5px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+/* =====================================================================
+    BLOCK: btn
+*/
+.btn {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    z-index: 1000;
+}
+
+.btn.prev {
+    left: 20px;
+}
+
+.btn.next {
+    right: 20px;
+}
+
+/* =====================================================================
+   RESPONSIVIDADE (Mobile Styles)
+*/
+@media (max-width: 768px) {
+
+    /* BLOCK: page-header (Mobile) */
+    .page-header {
+        height: 60px;
+        padding: 0 20px;
+    }
+
+    .header-nav {
+        font-size: 1.2rem;
+    }
+
+    /* BLOCK: btn (Reposicionamento dos botões para mobile) */
+    .btn {
+        top: auto;
+        bottom: 20px;
+        transform: none;
+        font-size: 2rem;
+    }
+
+    .btn.prev {
+        left: 20px;
+    }
+
+    .btn.next {
+        right: 20px;
+    }
+
+    /* Ajuste nos cards para mobile */
+    .card.text-card,
+    .card.image-card {
+        width: 95vw;
+    }
+
+    .text-card ul {
+        list-style-type: disc;
+        /* Mostra os bullets */
+        padding-left: 30px;
+        /* Espaço para os bullets */
+        margin: 15px 0;
+        /* Espaço vertical entre listas */
+    }
+
+    .text-card li {
+        margin-bottom: 1em;
+        /* Espaço entre cada item da lista */
+        line-height: 1.4;
+        /* Espaçamento entre linhas do mesmo item */
+    }
+
+    /* BLOCK: image-card (Ajuste do layout para mobile) */
+    .image-card .card-content {
+        flex-direction: column;
+    }
+
+    .image-card .card-image {
+        order: 1;
+        flex: 0 0 70%;
+        width: 100%;
+    }
+
+    .image-card .card-text {
+        order: 2;
+        flex: 0 0 30%;
+        width: 100%;
+        border-top: 1px solid #fff;
+        /* Borda superior no mobile */
+    }
+
+    /* Remove conectores na versão mobile */
+    .slot[data-type="connector"] {
+        display: none;
+    }
+
+    /* Ajuste de posicionamento para liberar espaço para os botões */
+    .sectionPin .slot[data-type="card"] {
+        align-items: flex-start;
+        justify-content: center;
+        padding-top: 30px;
+    }
+
+    /* Desativa efeito hover para dispositivos móveis (geral) */
+    .card:hover {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+
+    .instagram-feed-full {
+        width: 100%;
+        max-width: 600px;
+        grid-template-columns: repeat(3, 1fr);
+        margin: 0 auto;
+    }
+}
+
+/* =====================================================================
+   BLOCK: theme (Variáveis e Temas para Redes Sociais)
+   ---------------------------------------------------------------------
+*/
+
+:root {
+    --telegraf-primary: #1e1e2f;
+    --telegraf-secondary: #f0f0f0;
+    --telegraf-font: 'Courier New', monospace;
+
+    /* MySpace */
+    --myspace-primary: #0d2340;
+    /* Azul escuro, mais profundo */
+    --myspace-secondary: #ffcc66;
+    /* Amarelo mais suave */
+    --myspace-font: 'VT323', monospace;
+    /* Fonte pixelada */
+    --myspace-card-border: 2px solid var(--myspace-secondary);
+    --myspace-card-bg: linear-gradient(135deg, #1a385e 0%, #0d2340 100%);
+    /* Gradiente sutil */
+    --myspace-card-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    /* Sombra mais pronunciada */
+
+    /* Orkut */
+    --orkut-primary: #e22bca;
+    /* Roxo vibrante */
+    --orkut-secondary: #fff;
+    --orkut-font: 'Arial', sans-serif;
+    --orkut-card-border: 3px solid var(--orkut-primary);
+    --orkut-card-bg: #fff;
+    --orkut-card-radius: 15px;
+    /* Bordas mais arredondadas */
+
+    /* Facebook */
+    --facebook-primary: #3b5998;
+    /* Azul Facebook mais preciso */
+    --facebook-secondary: #f0f2f5;
+    /* Cinza claro */
+    --facebook-font: 'Helvetica Neue', Arial, sans-serif;
+    --facebook-card-border: 1px solid #dddfe2;
+    /* Borda cinza clara */
+    --facebook-card-bg: #fff;
+    --facebook-card-radius: 8px;
+    /* Bordas levemente arredondadas */
+
+    /* Twitter/X */
+    --twitter-primary: #000;
+    --twitter-secondary: #fff;
+    --twitter-font: 'Chirp', Arial, sans-serif;
+    /* Fonte do Twitter/X */
+    --twitter-card-border: 1px solid #444;
+    /* Borda cinza escura */
+    --twitter-card-bg: #111;
+    /*Um pouco mais escuro*/
+
+    /* Instagram */
+    --instagram-primary: #e1306c;
+    /* Rosa mais vibrante */
+    --instagram-secondary: #ffdc80;
+    /* Amarelo vibrante */
+    --instagram-font: 'Instagram Sans', sans-serif;
+    /* Uma fonte sans-serif moderna */
+    --instagram-card-border: none;
+    /* Sem borda */
+    --instagram-card-bg: transparent;
+    /*Fundo transparente pra ficar com o gradiente do sectionPin*/
+    --instagram-card-radius: 12px;
+
+    /* TikTok */
+    --tiktok-primary: #000;
+    --tiktok-secondary: #69c9d0;
+    /* Ciano */
+    --tiktok-tertiary: #ee1d52;
+    /* Rosa choque */
+    --tiktok-font: 'Proxima Nova', sans-serif;
+    /*Mesma fonte*/
+    --tiktok-card-border: none;
+    --tiktok-card-bg: #111;
+}
+
+.intro.telegraf {
+    background: var(--telegraf-primary);
+    color: var(--telegraf-secondary);
+    font-family: var(--telegraf-font);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+
+/* ----- MySpace Theme ----- */
+.intro.myspace {
+    /*Já tem as configs*/
+    flex-direction: column;
+    /*Para organizar os elementos*/
+    align-items: center;
+    background: var(--myspace-primary);
+    color: var(--myspace-secondary);
+    font-family: var(--myspace-font);
+}
+
+h1.myspace {
+    font-family: var(--myspace-font);
+    /*Força a fonte nos títulos*/
+    font-size: 3.5rem;
+    /*Aumenta um pouco*/
+}
+
+.sectionPin.myspace {
+    background: var(--myspace-card-bg);
+    /* Usa o gradiente */
+    color: var(--myspace-secondary);
+}
+
+.sectionPin.myspace .card {
+    border: var(--myspace-card-border);
+    background: var(--myspace-card-bg);
+    box-shadow: var(--myspace-card-shadow);
+}
+
+.sectionPin.myspace .text-card {
+    color: var(--myspace-secondary);
+}
+
+/* Efeito de hover específico para MySpace */
+.sectionPin.myspace .card:hover {
+    transform: translateY(-5px);
+    /* Leve elevação */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    /* Sombra mais intensa */
+}
+
+.myspace-profile-mockup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+    width: 80%;
+    /* Ajuste conforme necessário */
+    max-width: 400px;
+    /* Largura máxima */
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Fundo semi-transparente */
+    border: 2px solid var(--myspace-secondary);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.myspace-profile-mockup .profile-pic {
+    width: 80px;
+    height: 80px;
+    background-color: #ccc;
+    /* Cor de placeholder */
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+}
+
+.myspace-profile-mockup .about-me {
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.myspace-profile-mockup .about-me p:first-child {
+    font-weight: bold;
+}
+
+.myspace-profile-mockup .top-friends {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    /* Espaçamento entre os ícones */
+    flex-direction: column;
+    /*Para o texto*/
+    align-items: center;
+}
+
+.myspace-profile-mockup .top-friends .friend-icons-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    justify-content: center;
+    /* Alterado para centralizar */
+    width: 100%;
+    gap: 0.25rem;
+    /*Adicione um gap tambem*/
+}
+
+.myspace-profile-mockup .top-friends p {
+    margin-bottom: 0.5rem;
+    /* Espaço entre o texto e os ícones */
+    text-align: center;
+    /* Centraliza o texto */
+    font-weight: bold;
+    /* Opcional: deixa em negrito */
+}
+
+.myspace-profile-mockup .top-friends .friend-icon {
+    width: calc(25% - 0.25rem);
+    /* 25% para 4 por linha, menos o gap (agora definido no container)*/
+    height: auto;
+    /*  A altura será determinada pela largura e pela proporção da imagem */
+    margin: 0;
+    /* Removemos a margem individual, o gap do container cuida do espaçamento */
+    box-sizing: border-box;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+
+.myspace-profile-mockup .profile-pic img,
+.myspace-profile-mockup .top-friends .friend-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Garante que a imagem cubra o círculo */
+    display: block;
+    /* Remove espaço extra abaixo da imagem */
+}
+
+
+/* ----- Orkut Theme ----- */
+.intro.orkut {
+    flex-direction: column;
+    align-items: center;
+    background: var(--orkut-primary);
+    color: var(--orkut-secondary);
+    font-family: var(--orkut-font);
+}
+
+.orkut h1 {
+    font-family: var(--orkut-font);
+}
+
+.sectionPin.orkut {
+    background: var(--orkut-primary);
+    color: var(--orkut-secondary);
+}
+
+.sectionPin.orkut .card {
+    border: var(--orkut-card-border);
+    background-color: var(--orkut-card-bg);
+    border-radius: var(--orkut-card-radius);
+}
+
+.sectionPin.orkut .text-card {
+    color: var(--orkut-primary);
+    /* Texto roxo */
+}
+
+.sectionPin.orkut .image-card .card-text {
+    background-color: var(--orkut-secondary);
+    /*Fundo branco*/
+}
+
+.orkut-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+/*ORKUT - FontAwesome*/
+.orkut-icons .scrap-icon,
+.orkut-icons .heart-icon,
+.orkut-icons .testim-icon {
+    width: 40px;
+    height: 40px;
+    background-color: var(--orkut-secondary);
+    border-radius: 50%;
+    color: var(--orkut-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+
+.orkut-icons .scrap-icon {
+    border-radius: 10px;
+    /*Balãozinho*/
+}
+
+.orkut-icons .testim-icon {
+    border-radius: 5px;
+    /*Testimonial*/
+}
+
+/* ----- Facebook Theme ----- */
+.intro.facebook {
+    flex-direction: column;
+    align-items: center;
+    background: var(--facebook-primary);
+    color: var(--facebook-secondary);
+    font-family: var(--facebook-font);
+}
+
+.facebook h1 {
+    font-family: var(--facebook-font);
+}
+
+.sectionPin.facebook {
+    background: var(--facebook-secondary);
+    /* Fundo cinza claro */
+    color: var(--facebook-primary);
+}
+
+.sectionPin.facebook .card {
+    border: var(--facebook-card-border);
+    background-color: var(--facebook-card-bg);
+    border-radius: var(--facebook-card-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Sombra sutil */
+}
+
+.sectionPin.facebook .image-card .card-text {
+    background-color: var(--facebook-secondary);
+    color: var(--facebook-primary);
+    border-right-color: var(--facebook-card-border);
+}
+
+.sectionPin.facebook .text-card {
+    color: var(--facebook-primary);
+}
+
+.facebook-status-bar {
+    background-color: var(--facebook-secondary);
+    border: 1px solid var(--facebook-card-border);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    width: 80%;
+    max-width: 500px;
+}
+
+.facebook-status-bar .friend-icons {
+    display: flex;
+    justify-content: flex-end;
+    /* Alinha à direita */
+    margin-top: 0.5rem;
+}
+
+/*FACEBOOK - FontAwesome*/
+.facebook-status-bar .friend-icons .friend-icon {
+    width: 30px;
+    height: 30px;
+    /* background-color: #ccc; Removido o background-color */
+    border-radius: 50%;
+    margin-left: 0.25rem;
+    overflow: hidden;
+    display: flex;
+    /* Adicionado para centralizar o ícone */
+    align-items: center;
+    /* Adicionado para centralizar o ícone */
+    justify-content: center;
+    /* Adicionado para centralizar o ícone */
+    color: var(--facebook-primary);
+}
+
+/* ----- Twitter/X Theme ----- */
+.intro.twitter {
+    flex-direction: column;
+    background: var(--twitter-primary);
+    color: var(--twitter-secondary);
+    font-family: var(--twitter-font);
+}
+
+.twitter h1 {
+    font-family: var(--twitter-font);
+}
+
+.sectionPin.twitter {
+    background: var(--twitter-primary);
+    color: var(--twitter-secondary);
+}
+
+.sectionPin.twitter .card {
+    border: var(--twitter-card-border);
+    background-color: var(--twitter-card-bg);
+}
+
+.sectionPin.twitter .text-card {
+    color: var(--twitter-secondary);
+}
+
+.twitter-tweet-box {
+    background-color: var(--twitter-primary);
+    border: 1px solid var(--twitter-secondary);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    width: 80%;
+    max-width: 400px;
+    position: relative;
+    /* Para posicionar o contador */
+    /* === Adições para o Twitter === */
+    display: flex;
+    /* Flexbox */
+    align-items: flex-start;
+    /* Alinha os itens no topo */
+    justify-content: space-between;
+    /* Espaço entre o texto e o ícone */
+
+}
+
+.tweet-content {
+    display: flex;
+    flex-direction: column;
+}
+
+/*TWITTER - FontAwesome*/
+.twitter-tweet-box .twitter-icon {
+    width: 30px;
+    height: 30px;
+    position: static;
+    margin-left: 1rem;
+    border-radius: 50%;
+    color: var(--twitter-secondary);
+    /* Cor do ícone */
+    display: flex;
+    /*Para centralizar*/
+    align-items: center;
+    /*Para centralizar*/
+    justify-content: center;
+    /*Para centralizar*/
+    font-size: 1.5rem;
+    /* Ajuste o tamanho conforme necessário */
+
+}
+
+
+.twitter-tweet-box .char-count {
+    /* Remova position absolute */
+    position: static;
+    color: #888;
+    font-size: 0.8rem;
+}
+
+
+/* ----- Instagram Theme ----- */
+/* ... (estilos Instagram anteriores) ... */
+.intro.instagram {
+    flex-direction: column;
+    background: linear-gradient(45deg, var(--instagram-primary), var(--instagram-secondary));
+    color: #fff;
+    font-family: var(--instagram-font);
+
+}
+
+
+.instagram h1 {
+    font-family: var(--instagram-font);
+}
+
+.intro.instagram {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 20px;
+}
+
+.instagram-feed-full {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    overflow: hidden;
+}
+
+
+
+.sectionPin.instagram {
+    background: linear-gradient(45deg, var(--instagram-primary) 20%, var(--instagram-secondary));
+    color: #fff;
+}
+
+.sectionPin.instagram .card {
+    border: var(--instagram-card-border);
+    background-color: var(--instagram-card-bg);
+    border-radius: var(--instagram-card-radius);
+}
+
+.sectionPin.instagram .text-card {
+    color: #fff;
+}
+
+.instagram-feed {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 colunas */
+    gap: 0.5rem;
+    /* Espaçamento */
+    width: 80%;
+    max-width: 600px;
+    /* Largura máxima */
+    margin: 0 auto;
+    /* Centraliza */
+    margin-bottom: 1rem;
+}
+
+.instagram-feed .insta-pic {
+    width: 100%;
+    height: 0;
+    /* Importante para manter a proporção */
+    padding-bottom: 100%;
+    /* Mantém a proporção quadrada */
+    overflow: hidden;
+    /* Esconde o excesso */
+    position: relative;
+    /* Para posicionar a imagem */
+}
+
+.instagram-feed .insta-pic img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* ----- TikTok Theme ----- */
+/* ... (estilos TikTok anteriores) ... */
+.intro.tiktok {
+    flex-direction: column;
+    background: var(--tiktok-primary);
+    color: var(--tiktok-secondary);
+    font-family: var(--tiktok-font);
+}
+
+.tiktok h1 {
+    font-family: var(--tiktok-font);
+}
+
+.sectionPin.tiktok {
+    background: var(--tiktok-primary);
+    color: var(--tiktok-secondary);
+}
+
+.sectionPin.tiktok .card {
+    border: var(--tiktok-card-border);
+    background-color: var(--tiktok-card-bg);
+}
+
+.sectionPin.tiktok .text-card {
+    color: var(--tiktok-secondary);
+}
+
+.sectionPin.tiktok .image-card .card-text {
+    background-color: var(--tiktok-tertiary);
+    /*Usa a cor rosa*/
+    border-right: none;
+    /*Sem borda*/
+}
+
+.tiktok-video-mockup {
+    background-color: #222;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    width: 80%;
+    max-width: 400px;
+    position: relative;
+    height: 50vh;
+    /* Altura para simular vídeo */
+    overflow: hidden;
+}
+
+.tiktok-video-mockup p {
+    position: absolute;
+    bottom: 40px;
+    left: 10px;
+    z-index: 2;
+}
+
+.tiktok-icons {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.tiktok-post-simulation {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*TIKTOK - FontAwesome*/
+.tiktok-icons>div {
+    width: 30px;
+    height: 30px;
+    /* background-color: rgba(255, 255, 255, 0.8);  Ícones semi-transparentes */
+    border-radius: 50%;
+    display: flex;
+    /*Centralizar*/
+    align-items: center;
+    /*Centralizar*/
+    justify-content: center;
+    /*Centralizar*/
+    font-size: 1rem;
+    /* Ajustar o tamanho do ícone */
+}
+
+/* Cores dos ícones do TikTok */
+.tiktok-icons .like-icon i {
+    color: #ee1d52;
+    /* Rosa choque */
+}
+
+.tiktok-icons .comment-icon i {
+    color: #69c9d0;
+    /* Ciano */
+}
+
+.tiktok-icons .share-icon i {
+    color: #fff;
+    /* Branco */
+}
+
+
+
+/* ====================================================
+    Media Queries para o Header (Duas Linhas)
+   ==================================================== */
+@media (max-width: 450px) {
+    .header-nav {
+        flex-direction: row;
+        /* Alinha os itens na horizontal */
+        flex-wrap: wrap;
+        /* Quebra a linha se necessário */
+        justify-content: center;
+        /* Alinha ao centro */
+        gap: 5px;
+        /* Espaçamento entre os itens */
+    }
+
+    .page-header {
+        height: auto;
+        /*Para se ajustar ao novo conteudo*/
+    }
+}

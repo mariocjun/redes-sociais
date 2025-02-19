@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MEWIL</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Importe as fontes personalizadas AQUI (se estiver usando) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=VT323&family=Chirp&family=Instagram+Sans&family=Proxima+Nova&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <!-- Cabeçalho fixo com botões de navegação e indicador de progresso -->
+    <header class="page-header">
+        <nav class="header-nav">
+            <!-- Cada botão possui um data-index correspondente à tela de Introdução (1, 3, 5, 7, 9, 11, 13) -->
+            <button class="header-btn" data-index="1">MySpace</button>
+            <button class="header-btn" data-index="3">Orkut</button>
+            <button class="header-btn" data-index="5">Facebook</button>
+            <button class="header-btn" data-index="7">Twitter/X</button>
+            <button class="header-btn" data-index="9">Instagram</button>
+            <button class="header-btn" data-index="11">TikTok</button>
+            <button class="header-btn" data-index="13">Sobre</button>
+        </nav>
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+    </header>
+
+    <!-- Botões de Navegação (Next e Prev) com símbolos -->
+    <button class="btn prev" aria-label="Voltar"><i class="fas fa-arrow-left"></i></button>
+    <button class="btn next" aria-label="Avançar"><i class="fas fa-arrow-right"></i></button>
+
+    <!-- Container Vertical com seções (6 grupos: Introdução e Área Horizontal1 Seção Final) -->
+    <div class="wrapper" id="wrapper">
+
+        <!-- Novo Intro para MEWIL (sem seção horizontal) -->
+        <section id="introMEWIL" class="intro telegraf" data-horizontal="false">
+            <h1>MEWIL</h1>
+            <p>Histórico e efeitos das redes sociais sobre a sociedade ao longo do tempo.</p>
+        </section>
+
+        <!-- Grupo 1: MySpace -->
+        <section id="intro1" class="intro myspace">
+            <h1 class="myspace">Welcome to MySpace</h1>
+            <div class="myspace-profile-mockup">
+                <div class="profile-pic">
+                    <img src="https://assets.imgix.net/unsplash/bear.jpg?w=40&h=40&fit=crop&crop=faces&dpr=2"
+                        alt="Profile Picture">
+                </div>
+                <div class="about-me">
+                    <p>About Me</p>
+                    <p>Sou apenas um fã de KPOP que gosta de ursos...</p>
+                </div>
+                <div class="top-friends">
+                    <p>Top 8 Friends</p>
+                    <div class="friend-icons-container">
+                        <div class="friend-icon"><img
+                                src="https://assets.imgix.net/unsplash/motorbike.jpg?w=40&h=40&fit=crop&crop=faces&dpr=2"
+                                alt="Friend 1"></div>
+                        <div class="friend-icon"><img
+                                src="https://assets.imgix.net/unsplash/bridge.jpg?w=40&h=40&fit=crop&crop=faces&dpr=2"
+                                alt="Friend 2"></div>
+                        <div class="friend-icon"><img
+                                src="https://assets.imgix.net/unsplash/mountains.jpg?w=40&h=40&fit=crop&crop=faces&dpr=2"
+                                alt="Friend 3"></div>
+                        <div class="friend-icon"><img
+                                src="https://assets.imgix.net/unsplash/turntable.jpg?w=40&h=40&fit=crop&crop=faces&dpr=2"
+                                alt="Friend 4"></div>
+                        <div class="friend-icon"><img
+                                src="https://assets.imgix.net/unsplash/hotairballoon.jpg?w=40&h=40&fit=crop&crop=faces&dpr=2"
+                                alt="Friend 5"></div>
+                        <div class="friend-icon"><img
+                                src="https://assets.imgix.net/unsplash/coyote.jpg?w=40&h=40&fit=crop&crop=faces&dpr=2"
+                                alt="Friend 6"></div>
+                        <div class="friend-icon"><img src="https://randomuser.me/api/portraits/men/44.jpg"
+                                alt="Friend 7"></div>
+                        <div class="friend-icon"><img src="https://randomuser.me/api/portraits/women/44.jpg"
+                                alt="Friend 8"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Customize your profile! Add music, videos, and make new friends.</p>
+        </section>
+
+        <!-- Grupo 1: Área Horizontal (MySpace) -->
+        <section id="sectionPin1" class="sectionPin myspace">
+            <div class="pin-wrap" id="pinWrap1">
+                <!-- Card Text com Bullet Points para MySpace -->
+                <div class="slot" data-type="card">
+                    <div class="card text-card">
+                        <div class="text-card">
+                            <h2>MYSPACE</h2>
+                            <ul>
+                                <li><strong>Introdução:</strong> Rede pioneira do início do milênio, criada para atrair
+                                    pessoas criativas e amantes da música, conectando artistas e fãs (P. H. MOTA, 2020).
+                                </li>
+                                <li><strong>Data de criação:</strong> 01 de Agosto de 2003.</li>
+                                <li><strong>Origem:</strong> Idealizada em 10 dias por Tom Anderson, Jon Hart e Chris
+                                    DeWolfe; alcançou 5 milhões de usuários com predominância de artistas e fãs (P. H.
+                                    MOTA, 2020).</li>
+                                <li><strong>Auge e Queda:</strong> Em 2006, era o site mais acessado dos EUA, mas
+                                    burocracia e a ascensão do Facebook comprometeram o serviço – postagens cessaram em
+                                    2022 (P. H. MOTA, 2020).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slot Connector e Cards de Imagem permanecem inalterados -->
+                <div class="slot" data-type="connector">
+                    <div class="connector">
+                        <div class="line"></div>
+                        <div class="connector-text">01 de Agosto de 2003</div>
+                    </div>
+                </div>
+                <div class="slot" data-type="card">
+                    <div class="card image-card">
+                        <div class="card-content">
+                            <div class="card-text">
+                                <ul>
+                                    <li><strong>Influência:</strong> Pioneira na monetização de música e publicidade
+                                        digital, popularizou a cultura pop e incentivou a customização de perfis
+                                        (ANDREWS,
+                                        2021; CASH, 2013).</li>
+                                </ul>
+                            </div>
+                            <div class="card-image">
+                                <img src="assets/myspace/origem.png"
+                                    alt="Pessoa na frente do computador com o MySpace aberto num perfil feminino." />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grupo 2: Orkut -->
+        <section id="intro2" class="intro orkut">
+            <h1 class="orkut">Bem-vindo ao Orkut!</h1>
+            <div class="orkut-icons">
+                <div class="scrap-icon"><i class="fas fa-envelope"></i></div>
+                <div class="heart-icon"><i class="fas fa-heart"></i></div>
+                <div class="testim-icon"><i class="fas fa-comment-alt"></i></div>
+            </div>
+            <p>Deixe um scrap, participe de comunidades e adicione seus amigos!</p>
+        </section>
+
+        <!-- Grupo 2: Área Horizontal (Orkut) -->
+        <section id="sectionPin2" class="sectionPin orkut">
+            <div class="pin-wrap" id="pinWrap2">
+                <!-- Card Text com Bullet Points para Orkut -->
+                <div class="slot" data-type="card">
+                    <div class="card text-card">
+                        <div class="text-card">
+                            <h2>ORKUT</h2>
+                            <ul>
+                                <li><strong>Introdução:</strong> Plataforma para criar perfis, álbuns, comunidades e
+                                    recados, que popularizou as redes sociais no Brasil.</li>
+                                <li><strong>Data de criação:</strong> 24 de Janeiro de 2004.</li>
+                                <li><strong>Origem:</strong> Desenvolvido por Orkut Büyükkökten, engenheiro turco
+                                    formado em Stanford, concebido enquanto trabalhava no Google.</li>
+                                <li><strong>Popularidade &amp; Auge/Queda:</strong> Popular de 2006 a 2011; auge entre
+                                    2008–2014, perdeu 95% dos usuários em 2013 e foi encerrado em 09/2014.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slots Connector e Cards de Imagem permanecem -->
+                <div class="slot" data-type="connector">
+                    <div class="connector">
+                        <div class="line"></div>
+                        <div class="connector-text">24 de Janeiro de 2004</div>
+                    </div>
+                </div>
+                <div class="slot" data-type="card">
+                    <div class="card image-card">
+                        <div class="card-content">
+                            <div class="card-text">
+                                <ul>
+                                    <li><strong style="color: rgb(255, 192, 250);">Influência:</strong> <span
+                                            style="color: rgb(255, 192, 250);">Contribuiu para a identidade digital com
+                                            perfis
+                                            personalizados e comunidades interativas (MONTEIRO, 2008; NEMER e FREEMAN,
+                                            2015);
+                                            maior fama no Brasil.</span></li>
+                                </ul>
+                            </div>
+                            <div class="card-image">
+                                <img src="assets/orkut/origem.png" alt="Imagem de um perfil do Orkut." />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grupo 3: Facebook -->
+        <section id="intro3" class="intro facebook">
+            <h1 class="facebook">Facebook</h1>
+            <div class="facebook-status-bar">
+                <p>What's on your mind?</p>
+                <div class="friend-icons">
+                    <div class="friend-icon"><i class="fas fa-user-friends"></i></div>
+                    <div class="friend-icon"><i class="fas fa-user-friends"></i></div>
+                    <div class="friend-icon"><i class="fas fa-user-friends"></i></div>
+                </div>
+            </div>
+            <p>Connect with friends and the world around you on Facebook.</p>
+        </section>
+
+        <!-- Grupo 3: Área Horizontal (Facebook) -->
+        <section id="sectionPin3" class="sectionPin facebook">
+            <div class="pin-wrap" id="pinWrap3">
+                <!-- Card Text com Bullet Points para Facebook -->
+                <div class="slot" data-type="card">
+                    <div class="card text-card">
+                        <div class="text-card">
+                            <h2>FACEBOOK</h2>
+                            <ul>
+                                <li><strong>Introdução:</strong> Nasceu como rede universitária e evoluiu para uma
+                                    plataforma global, atualmente investindo no metaverso (Paula Mateu).</li>
+                                <li><strong>Data de criação:</strong> 04 de Fevereiro de 2004.</li>
+                                <li><strong>Origem:</strong> Criado em Harvard por Mark Zuckerberg e colegas; expandiu
+                                    de ferramenta exclusiva para estudantes a rede mundial (a partir de 2006).</li>
+                                <li><strong>Auge e Queda:</strong> Cresceu exponencialmente (1 bilhão em 2012, 2 bilhões
+                                    em 2017); desde 2018, há declínio no engajamento (FOLHA, 2017; G1, 2017; Amol Rajan,
+                                    2018).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slots Connector e Cards de Imagem permanecem inalterados -->
+                <div class="slot" data-type="connector">
+                    <div class="connector">
+                        <div class="line"></div>
+                        <div class="connector-text">04 de Fevereiro de 2004</div>
+                    </div>
+                </div>
+                <div class="slot" data-type="card">
+                    <div class="card image-card">
+                        <div class="card-content">
+                            <div class="card-text">
+                                <ul>
+                                    <li><strong>Influência:</strong> Revolucionou a publicidade online com segmentação
+                                        avançada e aquisições, impactando debates políticos e sociais, mas levantou
+                                        questões
+                                        de privacidade; maior fama na Índia.</li>
+                                </ul>
+                            </div>
+                            <div class="card-image">
+                                <img src="assets/facebook/influencias-desktop.jpg" alt="Imagem de um olho com a logo do Facebook" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Grupo 4: Twitter/X -->
+        <section id="intro4" class="intro twitter">
+            <h1 class="twitter">X</h1>
+            <div class="twitter-tweet-box">
+                <div class="tweet-content">
+                    <p>Join the conversation.</p>
+                    <div class="char-count">0/280</div>
+                </div>
+                <div class="twitter-icon"><i class="fab fa-twitter"></i></div>
+            </div>
+        </section>
+
+        <!-- Grupo 4: Área Horizontal (Twitter) -->
+        <section id="sectionPin4" class="sectionPin twitter">
+            <div class="pin-wrap" id="pinWrap4">
+                <!-- Card Text com Bullet Points para Twitter -->
+                <div class="slot" data-type="card">
+                    <div class="card text-card">
+                        <div class="text-card">
+                            <h2>TWITTER/X</h2>
+                            <ul>
+                                <li><strong>Introdução:</strong> Rede que permite compartilhar tweets em tempo real,
+                                    facilitando o acompanhamento de notícias e eventos.</li>
+                                <li><strong>Data de criação:</strong> 21 de Março de 2006.</li>
+                                <li><strong>Origem:</strong> Criado por Jack Dorsey, Evan Williams, Biz Stone e Noah
+                                    Glass; evoluiu rapidamente com crescimento expressivo de tweets diários.</li>
+                                <li><strong>Auge e Queda:</strong> Destaque no SXSW (2007); alcançou 200 milhões de
+                                    usuários em 2012; turbulência com a aquisição por Elon Musk em 2022 e rebatizado
+                                    como X em 2023.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slots Connector e Cards de Imagem permanecem inalterados -->
+                <div class="slot" data-type="connector">
+                    <div class="connector">
+                        <div class="line"></div>
+                        <div class="connector-text">21 de Março de 2006</div>
+                    </div>
+                </div>
+                <div class="slot" data-type="card">
+                    <div class="card image-card">
+                        <div class="card-content">
+                            <div class="card-text">
+                                <ul>
+                                    <li><strong>Influência:</strong> Transformou a comunicação instantânea, servindo de
+                                        palco para debates políticos e culturais, mas contribuiu para polarização e
+                                        desinformação; maior fama nos EUA.</li>
+                                </ul>
+                            </div>
+                            <div class="card-image">
+                                <img src="assets/x/origem.jpg" alt="Imagem 1" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Grupo 5: Instagram -->
+        <section id="intro5" class="intro instagram">
+            <h1 class="instagram">Instagram</h1>
+            <div class="instagram-feed-full">
+                <div class="insta-pic">
+                    <img src="https://picsum.photos/200/200?random=11" alt="instagram-post">
+                </div>
+                <div class="insta-pic">
+                    <img src="https://picsum.photos/200/200?random=12" alt="instagram-post">
+                </div>
+                <div class="insta-pic">
+                    <img src="https://picsum.photos/200/200?random=13" alt="instagram-post">
+                </div>
+                <div class="insta-pic">
+                    <img src="https://picsum.photos/200/200?random=14" alt="instagram-post">
+                </div>
+                <div class="insta-pic">
+                    <img src="https://picsum.photos/200/200?random=15" alt="instagram-post">
+                </div>
+                <div class="insta-pic">
+                    <img src="https://picsum.photos/200/200?random=16" alt="instagram-post">
+                </div>
+                <div class="insta-pic">
+                    <img src="https://picsum.photos/200/200?random=17" alt="instagram-post">
+                </div>
+                <div class="insta-pic">
+                    <img src="https://picsum.photos/200/200?random=18" alt="instagram-post">
+                </div>
+                <div class="insta-pic">
+                    <img src="https://picsum.photos/200/200?random=19" alt="instagram-post">
+                </div>
+            </div>
+        </section>
+
+        <!-- Grupo 5: Área Horizontal (Instagram) -->
+        <section id="sectionPin5" class="sectionPin instagram">
+            <div class="pin-wrap" id="pinWrap5">
+                <!-- Card Text com Bullet Points para Instagram -->
+                <div class="slot" data-type="card">
+                    <div class="card text-card">
+                        <div class="text-card">
+                            <h2>INSTAGRAM</h2>
+                            <ul>
+                                <li><strong>Introdução:</strong> Rede visual para compartilhamento de fotos e vídeos,
+                                    moldando gostos e o consumo diário (INVESTNEWS, 2024).</li>
+                                <li><strong>Data de criação:</strong> 06 de Outubro de 2010.</li>
+                                <li><strong>Origem:</strong> Criado por Kevin Systrom e Mike Krieger para preencher a
+                                    lacuna visual, evoluindo a partir do conceito do Burbn.</li>
+                                <li><strong>Popularidade:</strong> Em alta desde 2018; adquirido pela Meta em 2012 e
+                                    destacado em 2022 no ranking de marcas mais valiosas.</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slots Connector e Cards de Imagem permanecem inalterados -->
+                <div class="slot" data-type="connector">
+                    <div class="connector">
+                        <div class="line"></div>
+                        <div class="connector-text">06 de Outubro de 2010</div>
+                    </div>
+                </div>
+                <div class="slot" data-type="card">
+                    <div class="card image-card">
+                        <div class="card-content">
+                            <div class="card-text">
+                                <ul>
+                                    <li><strong>Influência:</strong> Líder no marketing de influência, impactando moda,
+                                        beleza e estilo de vida, mas intensificou a busca por validação visual; maior
+                                        fama
+                                        na Índia.</li>
+                                </ul>
+                            </div>
+                            <div class="card-image">
+                                <img src="assets/instagram/Instagram-origem.jpg" alt="Imagem 1" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grupo 6: TikTok -->
+        <section id="intro6" class="intro tiktok">
+            <h1 class="tiktok">TikTok</h1>
+            <div class="tiktok-video-mockup">
+                <img src="https://media.giphy.com/media/l0HlSNOxJB956qwfK/giphy.gif" alt="TikTok Post Simulation"
+                    class="tiktok-post-simulation">
+                <p>Watch short videos about #tiktok on TikTok.</p>
+                <div class="tiktok-icons">
+                    <div class="like-icon"><i class="fas fa-heart"></i></div>
+                    <div class="comment-icon"><i class="fas fa-comment"></i></div>
+                    <div class="share-icon"><i class="fas fa-share"></i></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grupo 6: Área Horizontal (TikTok) -->
+        <section id="sectionPin6" class="sectionPin tiktok">
+            <div class="pin-wrap" id="pinWrap6">
+                <!-- Card Text com Bullet Points para TikTok -->
+                <div class="slot" data-type="card">
+                    <div class="card text-card">
+                        <div class="text-card">
+                            <h2>TIKTOK</h2>
+                            <ul>
+                                <li><strong>Introdução:</strong> Rede para vídeos curtos (15, 60 seg ou 3 min) com
+                                    ferramentas de edição como filtros, legendas e trilhas sonoras.</li>
+                                <li><strong>Data de criação:</strong> Setembro de 2016.</li>
+                                <li><strong>Origem:</strong> Surgiu como Musical.ly em 2014; foi adquirido pela
+                                    ByteDance e transformado em TikTok em 2017, com 750 milhões de downloads em 2019.
+                                </li>
+                                <li><strong>Popularidade:</strong> Em alta desde 2019, com 66% dos usuários com menos de
+                                    30 anos e 1 bilhão de usuários em 2021; enfrentou controvérsias políticas nos EUA.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slots Connector e Cards de Imagem permanecem inalterados -->
+                <div class="slot" data-type="connector">
+                    <div class="connector">
+                        <div class="line"></div>
+                        <div class="connector-text">Setembro de 2016</div>
+                    </div>
+                </div>
+                <div class="slot" data-type="card">
+                    <div class="card image-card">
+                        <div class="card-content">
+                            <div class="card-text">
+                                <ul>
+                                    <li><strong>Influência:</strong> Impulsionou tendências virais e o marketing de
+                                        influência, mas também estimulou a comparação social e comportamentos
+                                        compulsivos;
+                                        maior fama nos EUA.</li>
+                                </ul>
+                            </div>
+                            <div class="card-image">
+                                <img src="assets/tiktok/origem.png" alt="Imagem 1" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Final (Reinício) -->
+        <section id="final" class="intro final">
+            <h1>Final / Reinício</h1>
+            <p>Clique em Next para recomeçar.</p>
+        </section>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>
